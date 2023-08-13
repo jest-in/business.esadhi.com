@@ -18,6 +18,9 @@ const handleJsonWebTokenError = (err) =>
 const handleTokenExpiredError = (err) =>
   new AppError("Token expired! Please log in again", 400);
 
+const handleCastError = (err) =>
+  new AppError("Transaction does not exist", 400);
+
 const sendErrorDev = (err, res) =>
   res.status(err.statusCode).json({
     status: err.status,
@@ -43,6 +46,7 @@ module.exports = (err, req, res, next) => {
     if (err.name === "TokenExpiredError") error = handleTokenExpiredError(err);
     if (err.name === "JsonWebTokenError") error = handleJsonWebTokenError(err);
     if (err.name === "ValidationError") error = handleValidationError(err);
+    if (err.name === "CastError") error = handleCastError(err);
     if (err.code === 11000) error = handleDuplicateFieldsDB(err);
     if (err.isOperational) sendErrorProd(err, res);
     else

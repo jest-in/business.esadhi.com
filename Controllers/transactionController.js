@@ -2,8 +2,41 @@ const TransactionModel = require("../Models/transactionModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
-module.exports.getTransactions = catchAsync(async (req, res, next) => {
-  let transactions = await TransactionModel.find({});
+module.exports.getUser = catchAsync(async (req, res, next) => {
+  const { userId } = req.body;
+  if (!userId) return next(new AppError("Please provide user Id!", 400));
+  const user = await TransactionModel.findOne({ userId });
+  if (!user) return next(new AppError("User does not exist!", 400));
+  else {
+    let parentName;
+    if (user.parentId !== "admin")
+      parentName = await TransactionModel.findOne(
+        { userId: user.parentId },
+        "name"
+      );
+    const childNames = await TransactionModel.find(
+      { parentId: user.userId, status: { $ne: "added" } },
+      "name"
+    );
+    res.status(200).json({
+      status: "success",
+      details: {
+        parentName: user.parentId !== "admin" ? parentName.name : "admin",
+        childNames,
+        name: user.name,
+      },
+    });
+  }
+});
+
+// super-admin/admin
+module.exports.getAddedTransactions = catchAsync(async (req, res, next) => {
+  const { role, email } = req.user;
+  const transactions = await TransactionModel.find(
+    role !== "admin"
+      ? { status: "added" }
+      : { $and: [{ status: "added" }, { admin: email }] }
+  );
   res.status(200).json({
     status: "success",
     transactions,
@@ -11,100 +44,87 @@ module.exports.getTransactions = catchAsync(async (req, res, next) => {
 });
 
 module.exports.addTransaction = catchAsync(async (req, res, next) => {
-  let { phoneNo, email, parentId } = req.body;
-  // Check whether the parent exists other than admin
+  let { name, address, category, phoneNo, email, parentId } = req.body;
+  if (!name || !address || !phoneNo || !email || !parentId)
+    return next(new AppError("Please provide required fields!", 400));
+
   if (parentId !== "admin") {
-    const parentCount = await TransactionModel.countDocuments({
-      userId: parentId,
+    // Check whether the parent exists
+    const parent = await TransactionModel.find({
+      $and: [{ userId: parentId }, { admin: req.user.email }],
     });
-    if (!parentCount) return next(new AppError("Parent not found!", 400));
+    if (!parent.length) return next(new AppError("Parent not found!", 400));
+    else category = parent[0].category;
   }
-  let count = await TransactionModel.countDocuments({ parentId });
-  // // if parent has 4 members already under him
-  if (count >= 4) return next(new AppError("Parent Id is full!", 400));
+  // Check category field exists
+  if (!category)
+    return next(new AppError("Please provide category field!", 400));
+  // if parent has 4 members already under him
+  if (
+    (await TransactionModel.countDocuments({
+      $and: [{ parentId }, { parentId: { $ne: "admin" } }],
+    })) >= 4
+  )
+    return next(new AppError("Parent Id is full!", 400));
   else {
     const transaction = {
+      name,
       phoneNo,
       email,
+      address,
       parentId,
       admin: req.user.email,
       status: "added",
+      category,
     };
-    let result = await TransactionModel.create(transaction);
-    res.status(200).json({
-      status: "success",
-      result,
-    });
+    if (await TransactionModel.create(transaction))
+      res.status(200).json({
+        status: "success",
+        message: "Added successfully",
+      });
   }
-});
-
-module.exports.getAddedTransactions = catchAsync(async (req, res, next) => {
-  let transactions = await TransactionModel.find({ status: "added" });
-  res.status(200).json({
-    status: "success",
-    transactions,
-  });
 });
 
 // Approve added transaction
 module.exports.approveTransaction = catchAsync(async (req, res, next) => {
   const { id, userId } = req.body;
-  // Ckeck whether the userId already exist
-  // Check whether transaction is already approved
-  const approved = await TransactionModel.find({
-    _id: id,
-    status: "approved",
-  });
-  // .where("status")
-  // .equals("approved");
-  if (approved.length) return next(new AppError("Already approved.", 400));
+  if (!id || !userId)
+    return next(new AppError("Please provide required fields!", 400));
 
-  const transactions = await TransactionModel.findByIdAndUpdate(id, {
-    userId,
-    status: "approved",
-  });
-  res.status(200).json({
-    status: "success",
-    transactions,
-  });
+  // Check whether transaction is already approved
+  if (
+    await TransactionModel.find({
+      $and: [{ _id: id }, { status: "approved" }],
+    })
+  )
+    return next(new AppError("Already approved.", 400));
+  // Approved
+  if (
+    await TransactionModel.updateOne(
+      { _id: id },
+      {
+        userId,
+        status: "approved",
+      }
+    )
+  )
+    res.status(200).json({
+      status: "success",
+      message: "Approved successfully",
+    });
 });
 
-// Retrieve eligible members for reward
+// (super-admin)Retrieve eligible members for reward
 module.exports.rewardableMembers = catchAsync(async (req, res, next) => {
-  const eligibleIds = await Transaction.aggregate([
-    {
-      $match: {
-        status: "approved",
-      },
-    },
-    {
-      $group: {
-        _id: "$parentId",
-        count: { $sum: 1 },
-      },
-    },
-    {
-      $match: {
-        count: 4,
-        _id: { $ne: "admin" },
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-        parentId: "$_id",
-      },
-    },
-  ]);
-  // Storing eligibleId's details to array
-  let eligibleMembers = [];
-  for ({ parentId } of eligibleIds) {
-    const member = await TransactionModel.findOne({
-      userId: parentId,
-      status: "approved",
+  const approvedIds = await TransactionModel.find({ status: "approved" });
+  const eligibleMembers = [];
+  for (user of approvedIds) {
+    const count = await TransactionModel.countDocuments({
+      $and: [{ parentId: user.userId }, { status: { $ne: "added" } }],
     });
-    if (member) eligibleMembers.push(member);
+    if (count === 4) eligibleMembers.push(user);
   }
+
   res.status(200).json({
     status: "success",
     eligibleMembers,
@@ -112,28 +132,33 @@ module.exports.rewardableMembers = catchAsync(async (req, res, next) => {
 });
 
 module.exports.rewardTransaction = catchAsync(async (req, res, next) => {
-  const admin = req.user.email;
   const { userId, rewardRemarks } = req.body;
   if (!userId || !rewardRemarks || rewardRemarks === null)
     return next(new AppError("Please provide required details!"), 400);
   if (
     (await TransactionModel.countDocuments({
-      parentId: userId,
-      status: "approved",
-      admin,
+      $and: [{ parentId: userId }, { status: "approved" }],
     })) !== 4
   )
     return next(new AppError("This user is not eligible for reward!", 400));
   else {
     if (
       await TransactionModel.findOneAndUpdate(
-        { userId, admin },
+        { userId },
         { status: "rewarded", rewardRemarks }
       )
     )
       res.status(200).json({
         status: "success",
-        // members,
+        message: "Rewarded Successfully",
       });
   }
+});
+
+module.exports.viewRewardedTransaction = catchAsync(async (req, res, next) => {
+  const transactions = await TransactionModel.find({ status: "rewarded" });
+  res.status(200).json({
+    status: "success",
+    transactions,
+  });
 });

@@ -1,13 +1,14 @@
 const express = require("express");
+const User = require("../Controllers/userController");
 const AuthController = require("../Controllers/authController");
 const router = express.Router();
 
-router.route("/signup").post(AuthController.signup);
+router.use(AuthController.protect, AuthController.restrictTo("super-admin"));
 
-router.route("/login").post(AuthController.login);
+router.route("/add-admin").post(User.addAdmin);
 
-router
-  .route("/reset-password")
-  .patch(AuthController.protect, AuthController.updatePassword);
+router.route("/view-admins").get(User.viewAdmins);
+
+router.route("/reset-admin-password").patch(User.resetAdmin);
 
 module.exports = router;

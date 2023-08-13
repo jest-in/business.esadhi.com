@@ -8,9 +8,9 @@ const IdSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: undefined,
+    default: "created",
     enum: {
-      values: [undefined, "assigned"],
+      values: ["downloaded", "created"],
       message: "{VALUE} is not supported",
     },
   },

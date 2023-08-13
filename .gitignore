@@ -1,3 +1,5 @@
 /node_modules
 /Dummy_data
+/super-admin/node_modules
 config.env
+Ids.xlsx

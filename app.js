@@ -7,6 +7,8 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 
+const cors = require("cors");
+
 const TransactionRoute = require("./Routes/transactionRoute");
 const IdRouter = require("./Routes/idRoute");
 const AuthRoute = require("./Routes/authRoute");
@@ -15,6 +17,12 @@ const globalErrorHandler = require("./Controllers/errorController");
 const AppError = require("./utils/appError");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5500",
+  })
+);
 
 // Global middlewares
 

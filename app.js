@@ -18,8 +18,10 @@ const AppError = require("./utils/appError");
 
 const app = express();
 
+// For CORS
 app.use(
   cors({
+    credentials: true,
     origin: "http://127.0.0.1:5500",
   })
 );

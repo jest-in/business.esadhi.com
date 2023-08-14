@@ -28,10 +28,10 @@ exports.login = catchAsync(async (req, res, next) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    secure: false,
+    secure: true,
     httpOnly: true,
     path: "/",
-    sameSite: "None",
+    sameSite: "None", //For CORS
   });
   res.status(200).json({
     status: "success",
@@ -39,14 +39,29 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.logout = catchAsync(async (req, res, next) => {
+  const token = undefined;
+  res.cookie("jwt", token, {
+    expires: new Date(Date.now() + 1),
+    secure: true,
+    httpOnly: true,
+    path: "/",
+    sameSite: "None",
+  });
+  res.status(200).json({
+    status: "success",
+  });
+});
+
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies.jwt) token = req.cookies.jwt;
+  // if (
+  //   req.headers.authorization &&
+  //   req.headers.authorization.startsWith("Bearer")
+  // ) {
+  //   token = req.headers.authorization.split(" ")[1];
+  // } else
+  if (req.cookies.jwt) token = req.cookies.jwt;
   if (!token)
     next(new AppError("You are not logged in! Please log in to access", 401));
 

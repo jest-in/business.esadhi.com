@@ -35,7 +35,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.status(200).json({
     status: "success",
-    token,
+    role: user.role === "super-admin" ? 101 : 102,
   });
 });
 

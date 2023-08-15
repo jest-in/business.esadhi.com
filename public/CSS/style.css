@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scrollbar-color: #B9A0EC #111;
+    scrollbar-width: thin;
+}
+
+:root {
+    --color-primary: #AEA4D9;
+    --color-secondary: #FE664F;
+    --color-background: #100B21;
+
+    --text-primary: #ffffff;
+    --text-secondary: #171031;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #111;
+}
+
+
+html::-webkit-scrollbar-thumb {
+    background-color: #B9A0EC;
+    border-radius: 50px;
+}
+
+.hidden{
+  display: none !important;
+}
+
+/* Login Page Start
+------------------------------------------------------------------------- */
+
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-sub-container{
+    width: 55%;
+    height: 65%;
+    background-color: var(--text-secondary);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border-radius: 10px;
+}
+
+.login-entries-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-img-div{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-img-div img{
+    height: 90%;
+}
+
+.login-boy-img{
+    max-width: 150px;
+}
+
+.wel-back-txt{
+    font-size: 3rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 40px;
+}
+
+.login-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-entries-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.login-entries-label{
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.login-entries-input{
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 280px;
+    padding: 10px;
+    color: var(--text-primary);
+    background-color: var(--color-secondary);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-entries-submit{
+    width: 280px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 10px;
+    background-color: var(--color-primary);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: 0.2s ease-in-out;
+}
+
+.login-entries-submit:hover{
+    cursor: pointer;
+    background-color: #887ca0
+}
+
+.login-reset-pass-link{
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-top: 30px;
+    transition: 0.2s ease-in-out;
+}
+
+.login-reset-pass-link:hover{
+    color: var(--color-secondary);
+}
+
+.login-error-label{
+    color: rgb(188, 15, 15);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+/* Login Page End
+------------------------------------------------------------------------- */
+
+/* Dashboard Start
+------------------------------------------------------------------------- */
+
+.dashboard-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: var(--color-background);
+    padding: 50px;
+}
+
+.dash-nav-container{
+    height: 100%;
+    width: 20%;
+    background-color: var(--text-secondary);
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.dashboard-content-container{
+    width: 80%;
+    height: 100%;
+    padding-left: 50px;
+}
+
+.nav-items-container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 6px 0 6px 6px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-items-container-selected{
+    background-color: var(--color-secondary);
+}
+
+.nav-items-container:hover{
+    background-color: #332c33;
+    cursor: pointer;
+}
+
+.nav-logo-div img{
+    width: 150px;
+    margin-bottom: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-logo-div img:hover{
+    scale: 110%;
+}
+
+.nav-items-icon-div{
+    width: 20%;
+}
+
+.nav-items-name-div{
+    width: 90%;
+}
+
+.nav-items-name-div h2{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.nav-items-selected{
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+}
+
+.dashboard-content-header-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-content-header-div h1{
+    font-size: 5rem;
+    width: 50%;
+}
+
+.dashboard-content-header-div h3, .dashboard-content-header-div span{
+    font-size: 2rem;
+    color: #00FDFA;
+}
+
+.dashboard-content-header-div img{
+    width: 25px;
+}
+
+.dashboard-content-container-sub-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-container-sub1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dash-content-box{
+    width: 45%;
+    padding: 20px;
+    background-color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.dash-content-box img{
+    width: 70px;
+}
+
+.dash-content-box-sub{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dash-content-box-sub h1{
+    font-size: 3rem;
+    color: var(--color-primary);
+}
+
+.dash-content-box-sub h2{
+    font-size: 6rem;
+    color: #00FDFA;
+}
+
+.dash-content-box-sub h3{
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.dashboard-container-sub2{
+    width: 100%;
+    background-color: var(--text-secondary);
+    padding: 20px;
+    margin-top: 50px;
+}
+
+#myChart{
+    width: 100%;
+    height: 340px !important;
+    overflow: hidden;
+}
+
+/* Dashboard End
+------------------------------------------------------------------------- */
+
+/* Approvals Start
+------------------------------------------------------------------------- */
+
+.approvals-contect-container{
+    width: 100%;
+    height: 85%;
+    background-color: var(--text-secondary);
+    margin-top: 40px;
+    border-radius: 10px;
+    padding: 0 40px;
+    overflow: scroll;
+}
+
+.approvals-contect-container-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    padding-top: 30px;
+    top: 0;
+    background-color: var(--text-secondary);
+}
+
+.approvals-contect-container-header h1,span{
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.approvals-contect-container-header input{
+    font-size: 1.5rem;
+    font-weight: 500;
+    outline: none;
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    max-width: 250px;
+}
+
+.approval-table-container{
+    padding-bottom: 40px;
+}
+
+.approval-table-header-div{
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    flex-direction: column;
+}
+
+.approval-table-header-div-scroll{
+    position: sticky;
+    top: 80px;
+    background-color: var(--text-secondary);
+    padding-top: 40px;
+}
+
+.approval-slno-div{
+    width: 5%;
+}
+
+.approval-name-div{
+    width: 30%;
+}
+
+.approval-contact-div{
+    width: 20%;
+}
+
+.approval-admin-div{
+    width: 25%;
+}
+
+.approval-package-div{
+    width: 20%;
+}
+
+.approve-table-content-hover{
+    display: flex;
+    width: 100%;
+}
+
+.approval-table-header-div h1{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.approval-hr{
+    color: var(--color-primary);
+    margin-top: 10px;
+}
+
+.approval-table-content-div{
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s ease-in-out;
+}
+
+.approval-table-content-div h1{
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+
+.approval-table-content-div:hover hr{
+    color: var(--color-secondary);
+}
+
+/* Approvals End
+------------------------------------------------------------------------- */

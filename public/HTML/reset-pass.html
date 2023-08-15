@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | esadhi</title>
+
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-sub-container">
+            <div class="login-entries-container">
+                <img class="login-boy-img" src="/Source/Logo.svg" alt="logo">
+                <p class="wel-back-txt">Reset Password</p>
+                <form form action="" method="post" class="login-form" id="form" autocomplete="off">
+                    <div class="login-entries-div">
+                        <label class="login-entries-label" for="password">Current Password</label>
+                        <input class="login-entries-input" type="password" name="password" id="password">
+                    </div>
+                    <div class="login-entries-div">
+                        <label class="login-entries-label" for="new-password">New Password</label>
+                        <input class="login-entries-input" type="password" name="new-password" id="new-password">
+                    </div>
+                    <div class="login-entries-div">
+                        <label class="login-entries-label" for="cnf-password">Confirm Password</label>
+                        <input class="login-entries-input" type="password" name="cnf-password" id="cnf-password">
+                    </div>
+                    <input class="login-entries-submit" type="submit" value="Change">
+                    <label class="login-error-label hidden" for="error" id="errMsg">Display Error Here</label>
+                    <a class="login-reset-pass-link" href="/HTML/login.html">Goto Login</a>
+                </form>
+            </div>
+            <div class="login-img-div">
+                <img src="/Source/Boy-Img2.png" alt="Boy Walking">
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/reset-pass.js"></script>
+</body>
+</html>

@@ -23,6 +23,7 @@ router
 
 // Super-Admin
 router.use(AuthController.restrictTo("super-admin"));
+router.route("/user-details").get(Transaction.getTransaction);
 router.route("/approve").patch(Transaction.approveTransaction);
 router
   .route("/reward-eleigibles")

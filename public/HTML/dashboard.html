@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | esadhi</title>
+
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="dash-nav-container">
+            <a href="#" class="nav-logo-div">
+                <img src="/Source/Logo.svg" alt="">
+            </a>
+            <a href="#" class="nav-items-container nav-items-container-selected">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/overviewIcon.svg" alt="overview icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2 class="nav-items-selected">Overview</h2>
+                </div>
+            </a>
+
+            <a href="#" class="nav-items-container">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/approveIcon.svg" alt="approve icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2>Approval</h2>
+                </div>
+            </a>
+
+            <a href="#" class="nav-items-container">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/pendingRewardsIcon.svg" alt="pending rewards icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2>Pending Rewards</h2>
+                </div>
+            </a>
+
+            <a href="#" class="nav-items-container">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/completedRewardsIcon.svg" alt="completed rewards icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2>Completed Rewards</h2>
+                </div>
+            </a>
+
+            <a href="#" class="nav-items-container">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/agentsIcon.svg" alt="cAgents icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2>Agents</h2>
+                </div>
+            </a>
+
+            <a href="#" class="nav-items-container">
+                <div class="nav-items-icon-div">
+                    <img src="/Source/clientsIcon.svg" alt="Clients icon">
+                </div>
+                <div class="nav-items-name-div">
+                    <h2>Clients</h2>
+                </div>
+            </a>
+
+        </nav>
+        <div class="dashboard-content-container">
+            <div class="dashboard-content-header-div">
+                <h1>Overview</h1>
+                <h3>Welcome Back <span>Brijesh</span>!!!</h3>
+                <a href="#"><img src="/Source/logoutIcon.svg" alt="logout icon"></a>
+            </div>
+            <div class="dashboard-content-container-sub-div">
+                <div class="dashboard-container-sub1">
+                    <div class="dash-content-box">
+                        <img src="/Source/penApprovalsIcon.svg" alt="pending approvals icon">
+                        <div class="dash-content-box-sub">
+                            <h1>Pending Approvals</h1>
+                            <h2>1055</h2>
+                            <h3>Request sent by Admin's</h3>
+                        </div>
+                    </div>
+
+                    <div class="dash-content-box">
+                        <img src="/Source/penApprovalsIcon.svg" alt="pending approvals icon">
+                        <div class="dash-content-box-sub">
+                            <h1>Pending Approvals</h1>
+                            <h2>1055</h2>
+                            <h3>Request sent by Admin's</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-container-sub2">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/chart.min.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                backgroundColor: [
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',  
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F'
+                ],
+                borderColor: [
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F',
+                '#00FDFA',
+                '#FE664F'
+                ],
+                borderWidth: 0,
+                barThickness: 30,
+                minBarLength: 0
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+    </script>
+
+</body>
+</html>

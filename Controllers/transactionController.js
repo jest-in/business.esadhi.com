@@ -85,6 +85,24 @@ module.exports.addTransaction = catchAsync(async (req, res, next) => {
   }
 });
 
+module.exports.getTransaction = catchAsync(async (req, res, next) => {
+  const { id } = req.body;
+  if (!id) return next(new AppError("Transaction is not selected!", 400));
+  else {
+    const user = await TransactionModel.findById(id);
+    let details = JSON.parse(JSON.stringify(user));
+    const parent = await TransactionModel.findOne({ userId: user.parentId });
+    // console.log(parent);
+    if (user.parentId === "admin") details["parentName"] = "admin";
+    else details["parentName"] = parent.name;
+    details.parent = undefined;
+    res.status(200).json({
+      status: "success",
+      details,
+    });
+  }
+});
+
 // Approve added transaction
 module.exports.approveTransaction = catchAsync(async (req, res, next) => {
   const { id, userId } = req.body;

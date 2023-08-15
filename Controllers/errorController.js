@@ -18,6 +18,7 @@ const handleJsonWebTokenError = (err) =>
 const handleTokenExpiredError = (err) =>
   new AppError("Token expired! Please log in again", 400);
 
+// If _id is not valid
 const handleCastError = (err) =>
   new AppError("Transaction does not exist", 400);
 

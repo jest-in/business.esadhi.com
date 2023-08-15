@@ -23,7 +23,7 @@
                 </div>
             </a>
 
-            <a href="#" class="nav-items-container">
+            <a href="/HTML/approvals.html" class="nav-items-container">
                 <div class="nav-items-icon-div">
                     <img src="/Source/approveIcon.svg" alt="approve icon">
                 </div>
@@ -55,7 +55,7 @@
                     <img src="/Source/agentsIcon.svg" alt="cAgents icon">
                 </div>
                 <div class="nav-items-name-div">
-                    <h2>Agents</h2>
+                    <h2>Admins</h2>
                 </div>
             </a>
 
@@ -73,27 +73,27 @@
             <div class="dashboard-content-header-div">
                 <h1>Overview</h1>
                 <h3>Welcome Back <span>Brijesh</span>!!!</h3>
-                <a href="#"><img src="/Source/logoutIcon.svg" alt="logout icon"></a>
+                <img src="/Source/logoutIcon.svg" alt="logout icon" id="logout-icon-btn">
             </div>
             <div class="dashboard-content-container-sub-div">
                 <div class="dashboard-container-sub1">
-                    <div class="dash-content-box">
+                    <a href="/HTML/approvals.html" class="dash-content-box">
                         <img src="/Source/penApprovalsIcon.svg" alt="pending approvals icon">
                         <div class="dash-content-box-sub">
                             <h1>Pending Approvals</h1>
                             <h2>1055</h2>
                             <h3>Request sent by Admin's</h3>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="dash-content-box">
-                        <img src="/Source/penApprovalsIcon.svg" alt="pending approvals icon">
+                    <a href="/HTML/approvals.html" class="dash-content-box">
+                        <img src="/Source/penRewardsIcon.svg" alt="pending approvals icon">
                         <div class="dash-content-box-sub">
-                            <h1>Pending Approvals</h1>
+                            <h1>Pending Rewards</h1>
                             <h2>1055</h2>
-                            <h3>Request sent by Admin's</h3>
+                            <h3>Eligible Client's</h3>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="dashboard-container-sub2">
                     <canvas id="myChart"></canvas>
@@ -103,6 +103,7 @@
     </div>
 
     <script src="/JS/chart.min.js"></script>
+    <script src="/JS/basic.js"></script>
     <script>
         const ctx = document.getElementById('myChart');
 

@@ -242,6 +242,10 @@ html::-webkit-scrollbar-thumb {
     color: var(--text-primary) !important;
 }
 
+.nav-items-icon-selected{
+    filter: brightness(0) invert(1);
+}
+
 .dashboard-content-header-div{
     width: 100%;
     display: flex;
@@ -261,6 +265,10 @@ html::-webkit-scrollbar-thumb {
 
 .dashboard-content-header-div img{
     width: 25px;
+}
+
+.dashboard-content-header-div img:hover{
+    cursor: pointer;
 }
 
 .dashboard-content-container-sub-div{
@@ -287,6 +295,12 @@ html::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: space-evenly;
     border-radius: 10px;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.dash-content-box:hover{
+    scale: 105%;
 }
 
 .dash-content-box img{
@@ -354,9 +368,10 @@ html::-webkit-scrollbar-thumb {
     padding-top: 30px;
     top: 0;
     background-color: var(--text-secondary);
+    z-index: 10;
 }
 
-.approvals-contect-container-header h1,span{
+.approvals-contect-container-header h1,#transactionCount{
     font-size: 2rem;
     color: var(--color-primary);
 }
@@ -385,9 +400,10 @@ html::-webkit-scrollbar-thumb {
 
 .approval-table-header-div-scroll{
     position: sticky;
-    top: 80px;
+    top: 40px;
     background-color: var(--text-secondary);
     padding-top: 40px;
+    /* padding-bottom: 10px; */
 }
 
 .approval-slno-div{
@@ -413,6 +429,7 @@ html::-webkit-scrollbar-thumb {
 .approve-table-content-hover{
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
 
 .approval-table-header-div h1{
@@ -444,4 +461,224 @@ html::-webkit-scrollbar-thumb {
 }
 
 /* Approvals End
+------------------------------------------------------------------------- */
+
+
+/* Client-Individual Start
+------------------------------------------------------------------------- */
+
+.client-individual-name{
+    font-size: 3rem !important;
+}
+
+.client-individual-approve-btn{
+    font-size: 1.5rem;
+    background-color: var(--color-secondary);
+    padding: 5px 20px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+}
+
+.client-individual-approve-btn:hover{
+    cursor: pointer;
+    background-color: var(--color-primary);
+}
+
+.client-individual-details-div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.client-individual-details-data-sec{
+    width: 33.33%;
+}
+
+.client-individual-details-data-sec h1{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+}
+
+.client-individual-details-data-sec h2,span{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    /* max-width: 200px; */
+}
+
+.client-individual-tree-struct-container{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.client-tree-struct-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.client-tree-father-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-tree-father-div img{
+    width: 30px;
+}
+
+.client-tree-father-div h3{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.client-tree-father-hr{
+    rotate: 90deg;
+    width: 20px;
+    border: 2px solid var(--color-secondary);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.client-under-hor-hr{
+    width: 75%;
+    border: 2px solid var(--color-secondary);
+}
+
+.client-tree-under-tree-container{
+    display: flex;
+}
+
+.client-tree-under-tree-container .client-tree-father-div{
+    padding: 0 30px;
+}
+
+
+/* Client-Individual End
+------------------------------------------------------------------------- */
+
+
+/* PopUp Start
+------------------------------------------------------------------------- */
+
+.screen-popup-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(16, 11, 33, 0.20);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen-popup-div{
+    width: fit-content;
+    padding: 60px;
+    border-radius: 10px;
+    background: linear-gradient(179deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.16) 100%);
+    backdrop-filter: blur(25px);
+}
+
+
+.popup-head-text-div h1{
+    font-size: 4rem;
+    font-weight: 700;
+    color: #00FDFA;
+    margin-bottom: 20px;
+}
+
+.popup-confirm-details-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.popup-confirm-name-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-confirm-name-div h1{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.popup-confirm-name-div h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.popup-input-entries-div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.popup-input-entries-div label{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.popup-input-entries-div input{
+    width: 100%;
+    background: rgba(217, 217, 217, 0.00);
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #00FDFA;
+}
+
+.popup-warning-message{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #F90000;
+}
+
+.popup-sumbit-btn, .popup-cancel-btn{
+    font-size: 1.8rem;
+    font-weight: 700;
+    background-color: var(--color-secondary);
+    padding: 5px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.popup-cancel-btn{
+    background-color: #00FDFA;
+    color: #000;
+}
+
+.popup-submit-cancel-btn-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* PopUp End
 ------------------------------------------------------------------------- */

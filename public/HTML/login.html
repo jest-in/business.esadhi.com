@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | esadhi</title>
 
-    <link rel="stylesheet" href="/CSS/style.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
     <div class="login-container">
-      <div class="login-sub-container">
-        <div class="login-entries-container">
-          <img class="login-boy-img" src="/Source/Logo.svg" alt="logo" />
-          <p class="wel-back-txt">Welcome Back !!!</p>
-          <form
-            action=""
-            method="post"
-            class="login-form"
-            id="form"
-            autocomplete="off"
-          >
-            <div class="login-entries-div">
-              <label class="login-entries-label" for="email"
-                >Email address</label
-              >
-              <input
-                class="login-entries-input"
-                type="email"
-                name="mail"
-                id="email-id"
-              />
+        <div class="login-sub-container">
+            <div class="login-entries-container">
+                <img class="login-boy-img" src="/Source/Logo.svg" alt="logo">
+                <p class="wel-back-txt">Welcome Back !!!</p>
+                <form action="" method="post" class="login-form" id="form" autocomplete="off">
+                    <div class="login-entries-div">
+                        <label class="login-entries-label" for="email">Email address</label>
+                        <input class="login-entries-input" type="email" name="mail" id="email-id">
+                    </div>
+                    <div class="login-entries-div">
+                        <label class="login-entries-label" for="password">Password</label>
+                        <input class="login-entries-input" type="password" name="password" id="password">
+                    </div>
+                    <input class="login-entries-submit" type="submit" value="Log in">
+                    <label class="login-error-label hidden" for="error" id="errMsg">Display Error Here</label>
+                    <a class="login-reset-pass-link" href="/HTML/reset-pass.html">Reset Password</a>
+                </form>
             </div>
-            <div class="login-entries-div">
-              <label class="login-entries-label" for="password">Password</label>
-              <input
-                class="login-entries-input"
-                type="password"
-                name="password"
-                id="password"
-              />
+            <div class="login-img-div">
+                <img src="/Source/Boy-Img.png" alt="Boy Walking">
             </div>
-            <input class="login-entries-submit" type="submit" value="Log in" />
-            <label class="login-error-label hidden" for="error" id="errMsg"
-              >Display Error Here</label
-            >
-            <a class="login-reset-pass-link" href="/HTML/reset-pass.html"
-              >Reset Password</a
-            >
-          </form>
         </div>
-        <div class="login-img-div">
-          <img src="/Source/Boy-Img.png" alt="Boy Walking" />
-        </div>
-      </div>
     </div>
 
     <script src="/JS/login.js"></script>
-  </body>
+</body>
 </html>

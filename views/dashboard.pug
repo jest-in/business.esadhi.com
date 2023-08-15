@@ -1,0 +1,117 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Dashboard | esadhi
+link(rel="stylesheet", href="/CSS/style.css")
+.dashboard-container
+  nav.dash-nav-container
+    a.nav-logo-div(href="#")
+      img(src="/Source/Logo.svg", alt)
+    a.nav-items-container.nav-items-container-selected(href="#")
+      .nav-items-icon-div
+        img(src="/Source/overviewIcon.svg", alt="overview icon")
+      .nav-items-name-div
+        h2.nav-items-selected Overview
+    a.nav-items-container(href="/HTML/approvals.html")
+      .nav-items-icon-div
+        img(src="/Source/approveIcon.svg", alt="approve icon")
+      .nav-items-name-div
+        h2 Approval
+    a.nav-items-container(href="#")
+      .nav-items-icon-div
+        img(src="/Source/pendingRewardsIcon.svg", alt="pending rewards icon")
+      .nav-items-name-div
+        h2 Pending Rewards
+    a.nav-items-container(href="#")
+      .nav-items-icon-div
+        img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
+      .nav-items-name-div
+        h2 Completed Rewards
+    a.nav-items-container(href="#")
+      .nav-items-icon-div
+        img(src="/Source/agentsIcon.svg", alt="cAgents icon")
+      .nav-items-name-div
+        h2 Admins
+    a.nav-items-container(href="#")
+      .nav-items-icon-div
+        img(src="/Source/clientsIcon.svg", alt="Clients icon")
+      .nav-items-name-div
+        h2 Clients
+  .dashboard-content-container
+    .dashboard-content-header-div
+      h1 Overview
+      h3
+        | Welcome Back 
+        span Brijesh
+        | !!!
+      img#logout-icon-btn(src="/Source/logoutIcon.svg", alt="logout icon")
+    .dashboard-content-container-sub-div
+      .dashboard-container-sub1
+        a.dash-content-box(href="/HTML/approvals.html")
+          img(src="/Source/penApprovalsIcon.svg", alt="pending approvals icon")
+          .dash-content-box-sub
+            h1 Pending Approvals
+            h2 1055
+            h3 Request sent by Admin's
+        a.dash-content-box(href="/HTML/approvals.html")
+          img(src="/Source/penRewardsIcon.svg", alt="pending approvals icon")
+          .dash-content-box-sub
+            h1 Pending Rewards
+            h2 1055
+            h3 Eligible Client's
+      .dashboard-container-sub2
+        canvas#myChart
+script(src="/JS/chart.min.js")
+script(src="/JS/basic.js")
+script.
+  
+  const ctx = document.getElementById('myChart');
+  
+          new Chart(ctx, {
+              type: 'bar',
+              data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              datasets: [{
+                  label: 'My First Dataset',
+                  data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                  backgroundColor: [
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',  
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F'
+                  ],
+                  borderColor: [
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F',
+                  '#00FDFA',
+                  '#FE664F'
+                  ],
+                  borderWidth: 0,
+                  barThickness: 30,
+                  minBarLength: 0
+              }]
+              },
+              options: {
+              scales: {
+                  y: {
+                  beginAtZero: true
+                  }
+              }
+              }
+          });
+  

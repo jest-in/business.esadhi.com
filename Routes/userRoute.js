@@ -3,7 +3,7 @@ const User = require("../Controllers/userController");
 const AuthController = require("../Controllers/authController");
 const router = express.Router();
 
-router.use(AuthController.protect, AuthController.restrictTo("super-admin"));
+router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
 
 router.route("/add-admin").post(User.addAdmin);
 

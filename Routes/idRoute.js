@@ -3,7 +3,10 @@ const IdController = require("../Controllers/CreateIdController");
 const AuthController = require("../Controllers/authController");
 const IdRouter = express.Router();
 
-IdRouter.use(AuthController.protect, AuthController.restrictTo("super-admin"));
+IdRouter.route(
+  AuthController.protect,
+  AuthController.restrictTo("super-admin")
+);
 
 IdRouter.route("/create-ids").post(IdController.createIds);
 

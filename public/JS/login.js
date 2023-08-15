@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 //Selectors
 const userAlert = document.querySelector(".login-error-label");
@@ -10,47 +10,42 @@ function hidingPopup() {
 }
 
 // Function for login submit
-const form=document.getElementById("form")
-form.addEventListener('submit',function(event){
-    event.preventDefault() //prevent from auto submit
-    const userId = document.getElementById("email-id").value;
-    const password = document.getElementById("password").value;
-    console.log(userId, password);
+const form = document.getElementById("form");
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); //prevent from auto submit
+  const userId = document.getElementById("email-id").value;
+  const password = document.getElementById("password").value;
+  console.log(userId, password);
 
-    //Checking for empty password
-    if(userId===''){
-        errMsg.innerText ='Please Enter your Email';
-        userAlert.classList.remove("hidden");
-        setTimeout(hidingPopup, 5000);
-        document.getElementById("email-id").focus();
-        return
-    }
+  //Checking for empty password
+  if (userId === "") {
+    errMsg.innerText = "Please Enter your Email";
+    userAlert.classList.remove("hidden");
+    setTimeout(hidingPopup, 5000);
+    document.getElementById("email-id").focus();
+    return;
+  } else if (password === "") {
+    errMsg.innerText = "Please Enter Password";
+    userAlert.classList.remove("hidden");
+    setTimeout(hidingPopup, 5000);
+    document.getElementById("password").focus();
+    return;
+  }
 
-    else if(password===''){
-        errMsg.innerText ='Please Enter Password';
-        userAlert.classList.remove("hidden");
-        setTimeout(hidingPopup, 5000);
-        document.getElementById("password").focus();
-        return
-    }
-
-    const result = fetch(
-    "http://localhost:3000/api/login",
-    {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-        Connection: "keep-alive",
-      },
-      body: JSON.stringify({
-        email:userId,
-        password,
-      }),
-    }
-  )
+  const result = fetch("http://localhost:3000/api/login", {
+    // credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      "Accept-Encoding": "gzip, deflate, br",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({
+      email: userId,
+      password,
+    }),
+  })
     .then((res) => res.json()) //Parsing to json
 
     //Response handling function
@@ -58,33 +53,29 @@ form.addEventListener('submit',function(event){
       //If credentials are wrong
       if (res.status === "success") {
         if (res.role === 101) {
-          location.href = "http://127.0.0.1:5500/HTML/dashboard.html"
-        }
-        else if (res.role === 102) {
-          location.href = "http://127.0.0.1:5500/HTML/approvals.html"
-        }
-        else {
+          location.href = "/dashboard";
+        } else if (res.role === 102) {
+          location.href = "/approvals";
+        } else {
           errMsg.innerText = "Unauthorised Access";
           userAlert.classList.remove("hidden");
           setTimeout(hidingPopup, 5000);
-          return
+          return;
         }
-      }
-
-      else{
-          errMsg.innerText = res.message;
-          userAlert.classList.remove("hidden");
-          setTimeout(hidingPopup, 5000);
-          return
+      } else {
+        errMsg.innerText = res.message;
+        userAlert.classList.remove("hidden");
+        setTimeout(hidingPopup, 5000);
+        return;
       }
     })
     .catch(function () {
       errMsg.innerText = "Check your internet connection";
       userAlert.classList.remove("hidden");
       setTimeout(hidingPopup, 5000);
-      return
+      return;
     });
-})
+});
 
 //Cursor auto select to email id
 document.getElementById("email-id").focus();

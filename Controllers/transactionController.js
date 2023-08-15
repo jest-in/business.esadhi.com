@@ -90,12 +90,11 @@ module.exports.getTransaction = catchAsync(async (req, res, next) => {
   if (!id) return next(new AppError("Transaction is not selected!", 400));
   else {
     const user = await TransactionModel.findById(id);
-    let details = JSON.parse(JSON.stringify(user));
+    const details = JSON.parse(JSON.stringify(user));
     const parent = await TransactionModel.findOne({ userId: user.parentId });
-    // console.log(parent);
-    if (user.parentId === "admin") details["parentName"] = "admin";
-    else details["parentName"] = parent.name;
-    details.parent = undefined;
+    if (user.parentId === "admin") details.parentName = "admin";
+    else details.parentName = parent.name;
+    details.parentId = undefined;
     res.status(200).json({
       status: "success",
       details,

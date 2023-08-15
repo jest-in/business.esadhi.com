@@ -1,0 +1,22 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Login | esadhi
+link(rel="stylesheet", href="/CSS/style.css")
+.login-container
+  .login-sub-container
+    .login-entries-container
+      img.login-boy-img(src="/Source/Logo.svg", alt="logo")
+      p.wel-back-txt Welcome Back !!!
+      form.login-form#form(action, method="post", autocomplete="off")
+        .login-entries-div
+          label.login-entries-label(for="email") Email address
+          input.login-entries-input#email-id(type="email", name="mail")
+        .login-entries-div
+          label.login-entries-label(for="password") Password
+          input.login-entries-input#password(type="password", name="password")
+        input.login-entries-submit(type="submit", value="Log in")
+        label.login-error-label.hidden#errMsg(for="error") Display Error Here
+        a.login-reset-pass-link(href="/HTML/reset-pass.html") Reset Password
+    .login-img-div
+      img(src="/Source/Boy-Img.png", alt="Boy Walking")
+script(src="/JS/login.js")

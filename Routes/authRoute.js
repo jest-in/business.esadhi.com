@@ -6,7 +6,7 @@ const router = express.Router();
 router.route("/login").post(AuthController.login);
 
 // Super-Admin/Admin
-router.use(
+router.route(
   AuthController.protect,
   AuthController.restrictTo("super-admin", "admin")
 );

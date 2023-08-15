@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const TransactionRoute = require("./Routes/transactionRoute");
+const pageRoute = require("./Routes/pageRoute");
 const IdRouter = require("./Routes/idRoute");
 const AuthRoute = require("./Routes/authRoute");
 const UserRoute = require("./Routes/userRoute");
@@ -63,9 +64,10 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.get("/", (req, res, next) => {
-  res.status(200).render("base");
-});
+
+// html pages
+app.use("/", pageRoute);
+
 //api
 app.use("/api", AuthRoute);
 app.use("/api/users", UserRoute);

@@ -6,7 +6,7 @@ const router = express.Router();
 // Public
 router.route("/user").get(Transaction.getUser);
 
-router.use(AuthController.protect);
+router.route(AuthController.protect);
 
 // Admin
 router
@@ -22,7 +22,7 @@ router
   );
 
 // Super-Admin
-router.use(AuthController.restrictTo("super-admin"));
+router.route(AuthController.restrictTo("super-admin"));
 router.route("/user-details").get(Transaction.getTransaction);
 router.route("/approve").patch(Transaction.approveTransaction);
 router

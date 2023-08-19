@@ -32,6 +32,15 @@ module.exports.getUser = catchAsync(async (req, res, next) => {
 // super-admin/admin
 module.exports.getAddedTransactions = catchAsync(async (req, res, next) => {
   const { role, email } = req.user;
+  if (req.query.count && role === "super-admin") {
+    const totalCount = await TransactionModel.countDocuments({
+      status: "added",
+    });
+    return res.status(200).json({
+      status: "success",
+      totalCount,
+    });
+  }
   const transactions = await TransactionModel.find(
     role !== "admin"
       ? { status: "added" }
@@ -141,6 +150,12 @@ module.exports.rewardableMembers = catchAsync(async (req, res, next) => {
     });
     if (count === 4) eligibleMembers.push(user);
   }
+
+  // If the query string contains count
+  if (req.query.count)
+    return res
+      .status(200)
+      .json({ status: "success", totalCount: eligibleMembers.length });
 
   res.status(200).json({
     status: "success",

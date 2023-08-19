@@ -6,11 +6,12 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const url = require("url");
 
 const cors = require("cors");
 
 const TransactionRoute = require("./Routes/transactionRoute");
-const pageRoute = require("./Routes/pageRoute");
+const viewRoute = require("./Routes/viewRoute");
 const IdRouter = require("./Routes/idRoute");
 const AuthRoute = require("./Routes/authRoute");
 const UserRoute = require("./Routes/userRoute");
@@ -59,6 +60,8 @@ app.use(hpp());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
+  const { query } = url.parse(req.url, true);
+  req.query = query;
   req.requestTime = new Date();
   next();
 });
@@ -66,7 +69,7 @@ app.use((req, res, next) => {
 // Routes
 
 // html pages
-app.use("/", pageRoute);
+app.use("/", viewRoute);
 
 //api
 app.use("/api", AuthRoute);

@@ -4,16 +4,16 @@ title Dashboard | esadhi
 link(rel="stylesheet", href="/CSS/style.css")
 .dashboard-container
   .screen-popup-back.hidden
-    .screen-popup-div
+    .screen-popup-div.hidden
       .popup-head-text-div
         h1 Are you sure ?
       .popup-confirm-details-div
         .popup-confirm-name-div
           h1 Name
-          h2 Jestin George
+          h2 #{name}
         .popup-confirm-name-div
-          h1 Amount
-          h2 4999
+          h1 Package
+          h2 #{category}
       form.popup-client-entries-form#add-client-form(action)
         .popup-input-entries-div
           label(for="client-id") Enter Client ID
@@ -24,15 +24,18 @@ link(rel="stylesheet", href="/CSS/style.css")
         .popup-input-entries-div
           label(for="client-id") Enter Card Number
           input#client-card-no(type="text")
-        label.login-error-label.popup-error-msg#errMsg(for="error") Display Error Here
+        label.login-error-label.popup-error-msg.hidden#errMsg(for="error") Display Error Here
         label.popup-warning-message(for="warning-msg") This Transaction cannot be Undone
         .popup-submit-cancel-btn-div
+          input#_id(type="hidden", name="_id", value=_id)
           input.popup-sumbit-btn(type="submit", value="Submit")
-          button.popup-cancel-btn Cancel
+          button.popup-cancel-btn(type="button") Cancel
+    .popup-checkmark-container.hidden
+      img(src="/Source/check-mark.gif", alt="success-animation")
   nav.dash-nav-container
     a.nav-logo-div(href="#")
       img(src="/Source/Logo.svg", alt)
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/dashboard")
       .nav-items-icon-div
         img(src="/Source/overviewIcon.svg", alt="overview icon")
       .nav-items-name-div
@@ -79,36 +82,34 @@ link(rel="stylesheet", href="/CSS/style.css")
         .client-individual-details-div
           .client-individual-details-data-sec
             h1 Admin Name
-            h2 Bastin
+            h2 #{admin}
           .client-individual-details-data-sec
             h1 Package
-            h2 Premium
+            h2 #{category}
           .client-individual-details-data-sec
-            h1 Amount Payable
-            h2
-              | Rs 
-              span 4500
+            h1 User ID
+            h2 #{userId}
         hr.approval-hr
         .client-individual-details-div
           .client-individual-details-data-sec
             h1 Contact
-            h2 9874561230
+            h2 #{phoneNo}
           .client-individual-details-data-sec
             h1 Email Address
-            h2 jestin@gmail.com
+            h2 #{email}
           .client-individual-details-data-sec
             h1 Address
-            h2 Menachery House, Periyadka, Belthangadi, Karnataka
+            h2 #{address}
         hr.approval-hr
         .client-individual-tree-struct-container
           .client-tree-struct-div
             .client-tree-father-div
               img(src="/Source/adminTreeIcon.svg", alt)
-              h3 Bastin
+              h3 #{parentName}
               hr.client-tree-father-hr
             .client-tree-father-div
               img(src="/Source/currentTreeIcon.svg", alt)
-              h3 Jestin George
+              h3 #{name}
               hr.client-tree-father-hr
             hr.client-under-hor-hr
             .client-tree-under-tree-container
@@ -127,4 +128,5 @@ link(rel="stylesheet", href="/CSS/style.css")
               .client-tree-father-div
                 hr.client-tree-father-hr
                 img(src="/Source/underTreeIcon.svg", alt)
-                h3 JNil
+                h3 Nil
+script(src="/JS/approve-client.js")

@@ -169,7 +169,7 @@ module.exports.rewardTransaction = catchAsync(async (req, res, next) => {
     return next(new AppError("Please provide required details!"), 400);
   if (
     (await TransactionModel.countDocuments({
-      $and: [{ parentId: userId }, { status: "approved" }],
+      $and: [{ parentId: userId }, { status: { $ne: "added" } }],
     })) !== 4
   )
     return next(new AppError("This user is not eligible for reward!", 400));

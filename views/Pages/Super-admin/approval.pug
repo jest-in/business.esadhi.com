@@ -1,0 +1,25 @@
+extends ../../Layout/super-admin-layout
+
+block content
+    .approvals-contect-container
+      .approvals-contect-container-header
+        h1
+          | Pending Approvals (
+          span#transactionCount
+          | )
+        input#search-approvals(type="text", name="search", placeholder="Search")
+      .approval-table-container
+        .approval-table-header-div.approval-table-header-div-scroll
+          .approve-table-content-hover
+            .approval-slno-div
+              h1 #
+            .approval-name-div
+              h1 Name
+            .approval-contact-div
+              h1 Contact
+            .approval-admin-div
+              h1 Admin
+            .approval-package-div
+              h1 Package
+          hr.approval-hr
+        #transactions.

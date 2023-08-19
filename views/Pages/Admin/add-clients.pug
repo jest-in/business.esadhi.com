@@ -1,0 +1,32 @@
+extends ../../Layout/admin-layout
+
+block content
+  .add-client-container
+    form#addClient-form.add-client-form(action)
+      .add-client-form-container
+        .add-client-form-div1
+          .add-client-form-ele1
+            label(for="name") Name
+            input#name(type="text")
+          .add-client-form-ele1
+            label(for="name") Address
+            input#address(type="text")
+          .add-client-form-ele1
+            label(for="name") Contact
+            input#contact(type="tel", maxlength="10")
+        .add-client-form-div2
+          .add-client-form-ele1
+            label(for="name") Email
+            input#email(type="email")
+          .add-client-form-ele1
+            label(for="name") Direct Client?
+            select#responseSelect(name, required)
+              option(value, selected, hidden) Select
+              option(value="yes") Yes
+              option(value="no") No
+          .add-client-form-ele1
+            label(for="name") Parent ID
+            input.parentid-input#parentIdInput(type="tel", disabled)
+      .add-client-form-div3
+        label.login-error-label.hidden#errMsg(for="error") Display Error Here
+        input(type="submit", value="Submit")

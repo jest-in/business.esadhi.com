@@ -55,7 +55,7 @@ form.addEventListener("submit", function (event) {
         if (res.role === 101) {
           location.href = "/dashboard";
         } else if (res.role === 102) {
-          location.href = "/approvals";
+          location.href = "/admin/dashboard";
         } else {
           errMsg.innerText = "Unauthorised Access";
           userAlert.classList.remove("hidden");

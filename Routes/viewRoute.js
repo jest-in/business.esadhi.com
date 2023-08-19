@@ -9,6 +9,21 @@ router.route("/").get(ViewController.login);
 // Admin
 router
   .get(
+    "/admin/dashboard",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.adminDashboard
+  )
+  .get(
+    "/admin/add-client",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.addClient
+  );
+
+// Super Admin
+router
+  .get(
     "/dashboard",
     AuthController.protect,
     AuthController.restrictTo("super-admin"),
@@ -24,10 +39,43 @@ router
     "/pending-rewards",
     AuthController.protect,
     AuthController.restrictTo("super-admin"),
-    (req, res, next) => {
-      // Not ready
-      res.status(200).render("approvals");
-    }
+    ViewController.pendingRewards
+  )
+  .get(
+    "/completed-rewards",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.completedRewards
+  )
+  .get(
+    "/admins",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.allAdmins
+  )
+  .get(
+    "/add-admin",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.addAdmins
+  )
+  .get(
+    "/reset-admin",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.resetAdmin
+  )
+  .get(
+    "/clients",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.clients
+  )
+  .get(
+    "/reset-password",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.resetPassword
   )
   .get(
     "/users/:id",

@@ -4,38 +4,53 @@ title Dashboard | esadhi
 link(rel="stylesheet", href="/CSS/style.css")
 .dashboard-container
   nav.dash-nav-container
-    a.nav-logo-div(href="#")
+    a.nav-logo-div(href="/dashboard")
       img(src="/Source/Logo.svg", alt)
-    a.nav-items-container.nav-items-container-selected(href="#")
+    a.nav-items-container.nav-items-container-selected(href="/dashboard")
       .nav-items-icon-div
         img(src="/Source/overviewIcon.svg", alt="overview icon")
       .nav-items-name-div
         h2.nav-items-selected Overview
-    a.nav-items-container(href="approvals")
+    a.nav-items-container(href="/approvals")
       .nav-items-icon-div
         img(src="/Source/approveIcon.svg", alt="approve icon")
       .nav-items-name-div
         h2 Approval
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/pending-rewards")
       .nav-items-icon-div
         img(src="/Source/pendingRewardsIcon.svg", alt="pending rewards icon")
       .nav-items-name-div
         h2 Pending Rewards
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/completed-rewards")
       .nav-items-icon-div
         img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
       .nav-items-name-div
         h2 Completed Rewards
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/admins")
       .nav-items-icon-div
         img(src="/Source/agentsIcon.svg", alt="cAgents icon")
       .nav-items-name-div
         h2 Admins
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/add-admin")
+      .nav-items-icon-div
+        img(src="/Source/addClientIcon.svg", alt="cAgents icon")
+      .nav-items-name-div
+        h2 Add Admin
+    a.nav-items-container(href="/reset-admin")
+      .nav-items-icon-div
+        img(src="/Source/blockAdmin.svg", alt="cAgents icon")
+      .nav-items-name-div
+        h2 Reset Admin
+    a.nav-items-container(href="/clients")
       .nav-items-icon-div
         img(src="/Source/clientsIcon.svg", alt="Clients icon")
       .nav-items-name-div
         h2 Clients
+    a.nav-items-container(href="/reset-password")
+      .nav-items-icon-div
+        img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
+      .nav-items-name-div
+        h2 Reset Password
   .dashboard-content-container
     .dashboard-content-header-div
       h1 Overview
@@ -44,24 +59,11 @@ link(rel="stylesheet", href="/CSS/style.css")
         span Brijesh
         | !!!
       img#logout-icon-btn(src="/Source/logoutIcon.svg", alt="logout icon")
-    .dashboard-content-container-sub-div
-      .dashboard-container-sub1
-        a.dash-content-box(href="/approvals")
-          img(src="/Source/penApprovalsIcon.svg", alt="pending approvals icon")
-          .dash-content-box-sub
-            h1 Pending Approvals
-            h2 1055
-            h3 Request sent by Admin's
-        a.dash-content-box(href="/HTML/approvals.html")
-          img(src="/Source/penRewardsIcon.svg", alt="pending approvals icon")
-          .dash-content-box-sub
-            h1 Pending Rewards
-            h2 1055
-            h3 Eligible Client's
-      .dashboard-container-sub2
-        canvas#myChart
-script(src="/JS/chart.min.js")
-script(src="/JS/basic.js")
+    
+    block content
+
+each url in scripts
+    script(src=url)
 script.
   
   const ctx = document.getElementById('myChart');

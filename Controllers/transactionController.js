@@ -110,7 +110,7 @@ module.exports.approveTransaction = catchAsync(async (req, res, next) => {
 
   // Check whether transaction is already approved
   if (
-    await TransactionModel.find({
+    await TransactionModel.findOne({
       $and: [{ _id: id }, { status: "approved" }],
     })
   )

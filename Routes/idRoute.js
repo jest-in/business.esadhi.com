@@ -3,13 +3,22 @@ const IdController = require("../Controllers/CreateIdController");
 const AuthController = require("../Controllers/authController");
 const IdRouter = express.Router();
 
-IdRouter.route(
+// error
+// IdRouter.route(
+//   AuthController.protect,
+//   AuthController.restrictTo("super-admin")
+// );
+
+IdRouter.route("/create-ids").post(
   AuthController.protect,
-  AuthController.restrictTo("super-admin")
+  AuthController.restrictTo("super-admin"),
+  IdController.createIds
 );
 
-IdRouter.route("/create-ids").post(IdController.createIds);
-
-IdRouter.route("/download-ids").get(IdController.downloadIds);
+IdRouter.route("/download-ids").get(
+  AuthController.protect,
+  AuthController.restrictTo("super-admin"),
+  IdController.downloadIds
+);
 
 module.exports = IdRouter;

@@ -8,15 +8,34 @@ router.route("/").get((req, res, next) => {
   res.status(200).render("login");
 });
 
-router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
+// error
+// router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
 
 // Admin
 router
-  .get("/approvals", (req, res, next) => {
-    res.status(200).render("approvals");
-  })
-  .get("/dashboard", (req, res, next) => {
-    res.status(200).render("dashboard");
-  });
+  .get(
+    "/dashboard",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    (req, res, next) => {
+      res.status(200).render("dashboard");
+    }
+  )
+  .get(
+    "/approvals",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    (req, res, next) => {
+      res.status(200).render("approvals");
+    }
+  )
+  .get(
+    "/users/:id",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    (req, res, next) => {
+      res.status(200).render("user");
+    }
+  );
 
 module.exports = router;

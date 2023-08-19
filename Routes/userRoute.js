@@ -3,12 +3,31 @@ const User = require("../Controllers/userController");
 const AuthController = require("../Controllers/authController");
 const router = express.Router();
 
-router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
+// error
+// router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
 
-router.route("/add-admin").post(User.addAdmin);
+router
+  .route("/add-admin")
+  .post(
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    User.addAdmin
+  );
 
-router.route("/view-admins").get(User.viewAdmins);
+router
+  .route("/view-admins")
+  .get(
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    User.viewAdmins
+  );
 
-router.route("/reset-admin-password").patch(User.resetAdmin);
+router
+  .route("/reset-admin-password")
+  .patch(
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    User.resetAdmin
+  );
 
 module.exports = router;

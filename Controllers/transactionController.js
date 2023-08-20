@@ -111,6 +111,17 @@ module.exports.getTransaction = catchAsync(async (req, res, next) => {
   }
 });
 
+module.exports.getAllTransactions = catchAsync(async (req, res, next) => {
+  const { role, email } = req.user;
+  const transactions = await TransactionModel.find(
+    role !== "admin" ? {} : { admin: email }
+  );
+  res.status(200).json({
+    status: "success",
+    transactions,
+  });
+});
+
 // Approve added transaction
 module.exports.approveTransaction = catchAsync(async (req, res, next) => {
   const { id, userId } = req.body;

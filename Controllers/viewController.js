@@ -110,6 +110,23 @@ module.exports.reward = catchAsync(async (req, res, next) => {
   );
 });
 
+module.exports.view = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await TransactionModel.findOne({ _id: id });
+  const details = JSON.parse(JSON.stringify(user));
+  const parent = await TransactionModel.findOne({ userId: user.parentId });
+  if (user.parentId === "admin") details.parentName = "admin";
+  else details.parentName = parent.name;
+  details.parentId = undefined;
+  res.status(200).render(
+    "Pages/Super-admin/reward",
+    Object.assign(details, {
+      heading: "User Details",
+      scripts: [],
+    })
+  );
+});
+
 // Admin
 module.exports.adminDashboard = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/admin/dashboard", {
@@ -121,4 +138,24 @@ module.exports.addClient = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/admin/add-clients", {
     scripts: ["/JS/basic.js", "/JS/add-client.js"],
   });
+});
+
+module.exports.adminClientView = catchAsync(async (req, res, next) => {
+  const { email } = req.user;
+  const { id } = req.params;
+  const user = await TransactionModel.findOne({
+    $and: [{ _id: id }, { admin: email }],
+  });
+  const details = JSON.parse(JSON.stringify(user));
+  const parent = await TransactionModel.findOne({ userId: user.parentId });
+  if (user.parentId === "admin") details.parentName = "admin";
+  else details.parentName = parent.name;
+  details.parentId = undefined;
+  res.status(200).render(
+    "Pages/admin/view-client",
+    Object.assign(details, {
+      heading: "User Details",
+      scripts: [],
+    })
+  );
 });

@@ -3,7 +3,12 @@
 const transactionsContainer = document.getElementById("transactions");
 const transactionCountElement = document.getElementById("transactionCount");
 
-fetch("http://localhost:3000/api/transactions/rewarded-transactions", {
+//Capitalizing the first character
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+fetch("http://localhost:3000/api/transactions", {
   credentials: "include",
   method: "GET",
   headers: {
@@ -33,7 +38,7 @@ fetch("http://localhost:3000/api/transactions/rewarded-transactions", {
             <h1>${index + 1}</h1>
           </div>
           <div class="approval-name-div">
-            <h1>${transaction.name}</h1>
+            <h1>${capitalizeFirstLetter(transaction.name)}</h1>
           </div>
           <div class="approval-contact-div">
             <h1>${transaction.phoneNo}</h1>

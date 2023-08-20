@@ -1,7 +1,8 @@
 .approvals-contect-container
   .approvals-contect-container-header
     h1.client-individual-name #{name}
-    button.client-individual-approve-btn #{popup}
+    if(popup)
+      button.client-individual-approve-btn #{popup}
   .client-individual-details-container
     .client-individual-details-div
       .client-individual-details-data-sec

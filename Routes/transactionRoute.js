@@ -25,9 +25,15 @@ router
     AuthController.restrictTo("super-admin", "admin"),
     Transaction.getAddedTransactions
   );
+router
+  .route("/")
+  .get(
+    AuthController.protect,
+    AuthController.restrictTo("super-admin", "admin"),
+    Transaction.getAllTransactions
+  );
 
 // Super-Admin
-// router.route(AuthController.restrictTo("super-admin"));
 router
   .route("/user-details")
   .get(

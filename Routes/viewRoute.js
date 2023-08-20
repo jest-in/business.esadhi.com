@@ -19,6 +19,12 @@ router
     AuthController.protect,
     AuthController.restrictTo("admin"),
     ViewController.addClient
+  )
+  .get(
+    "/admin/view/:id",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin", "admin"),
+    ViewController.adminClientView
   );
 
 // Super Admin

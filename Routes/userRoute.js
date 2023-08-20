@@ -3,9 +3,6 @@ const User = require("../Controllers/userController");
 const AuthController = require("../Controllers/authController");
 const router = express.Router();
 
-// error
-// router.route(AuthController.protect, AuthController.restrictTo("super-admin"));
-
 router
   .route("/add-admin")
   .post(

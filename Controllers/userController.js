@@ -3,12 +3,21 @@ const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 module.exports.addAdmin = catchAsync(async (req, res, next) => {
-  const { name, email, password, passwordConfirm } = req.body;
-  if (!email || !password || !passwordConfirm)
+  const { name, email, phoneNo, address, password, passwordConfirm } = req.body;
+  if (!email || !password || !phoneNo || !name || !address || !passwordConfirm)
     return next(new AppError("Please provide the required fields!"));
   else if (await UserModel.findOne({ email }))
     return next(new AppError("Admin already exists!"));
-  else if (await UserModel.create({ name, email, password, passwordConfirm }))
+  else if (
+    await UserModel.create({
+      name,
+      email,
+      phoneNo,
+      address,
+      password,
+      passwordConfirm,
+    })
+  )
     res.status(200).json({
       status: "success",
       message: "Added new admin",

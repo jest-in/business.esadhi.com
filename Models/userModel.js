@@ -14,6 +14,15 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please provide valid email"],
   },
+  phoneNo: {
+    type: String,
+    unique: true,
+    required: [true, "Please provide phone number"],
+  },
+  address: {
+    type: String,
+    required: [true, "Please provide address"],
+  },
   role: {
     type: String,
     default: "admin",

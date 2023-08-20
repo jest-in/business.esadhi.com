@@ -21,9 +21,33 @@ router
     ViewController.addClient
   )
   .get(
+    "/admin/pending-approvals",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.pendingApprovals
+  )
+  .get(
+    "/admin/approved-clients",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.approvedClients
+  )
+  .get(
+    "/admin/completed-rewards",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.adminCompletedRewards
+  )
+  .get(
+    "/admin/reset-password",
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    ViewController.adminResetPassword
+  )
+  .get(
     "/admin/view/:id",
     AuthController.protect,
-    AuthController.restrictTo("super-admin", "admin"),
+    AuthController.restrictTo("admin"),
     ViewController.adminClientView
   );
 
@@ -94,6 +118,18 @@ router
     AuthController.protect,
     AuthController.restrictTo("super-admin"),
     ViewController.reward
+  )
+  .get(
+    "/view/:id",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.view
+  )
+  .get(
+    "/view/admin/:email",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.viewAdmin
   );
 
 module.exports = router;

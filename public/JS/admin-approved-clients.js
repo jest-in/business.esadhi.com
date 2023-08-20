@@ -3,7 +3,7 @@
 const transactionsContainer = document.getElementById("transactions");
 const transactionCountElement = document.getElementById("transactionCount");
 
-fetch("http://localhost:3000/api/users/view-admins", {
+fetch("http://localhost:3000/api/transactions/view-approved", {
   credentials: "include",
   method: "GET",
   headers: {
@@ -15,18 +15,17 @@ fetch("http://localhost:3000/api/users/view-admins", {
 })
   .then((response) => response.json())
   .then((data) => {
-    if (data.status === "success" && data.admins) {
+    if (data.status === "success" && data.transactions) {
       // Update transaction count dynamically
-      console.log(data);
-      const transactionsCount = data.admins.length;
+      const transactionsCount = data.transactions.length;
       transactionCountElement.textContent = transactionsCount;
 
       // Generate HTML for each transaction data row
-      const transactionsHTML = data.admins
+      const transactionsHTML = data.transactions
         .map(
           (transaction, index) => `
       <div class="approval-table-content-div" data-transaction-id="${
-        transaction.email
+        transaction._id
       }">
         <div class="approve-table-content-hover">
           <div class="approval-slno-div">
@@ -39,10 +38,10 @@ fetch("http://localhost:3000/api/users/view-admins", {
             <h1>${transaction.phoneNo}</h1>
           </div>
           <div class="approval-admin-div">
-            <h1>${transaction.address}</h1>
+            <h1>${transaction.admin}</h1>
           </div>
           <div class="approval-package-div">
-            <h1>${transaction.email}</h1>
+            <h1>${transaction.category}</h1>
           </div>
         </div>
         <hr class="approval-hr">
@@ -72,6 +71,6 @@ fetch("http://localhost:3000/api/users/view-admins", {
 function handleTransactionClick(event) {
   const transactionId = event.currentTarget.getAttribute("data-transaction-id");
   if (transactionId) {
-    window.location.href = `view/admin/${transactionId}`;
+    window.location.href = `view/${transactionId}`;
   }
 }

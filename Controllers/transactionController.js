@@ -111,6 +111,19 @@ module.exports.getTransaction = catchAsync(async (req, res, next) => {
   }
 });
 
+module.exports.getApprovedTransactions = catchAsync(async (req, res, next) => {
+  const { role, email } = req.user;
+  const transactions = await TransactionModel.find(
+    role !== "admin"
+      ? { status: "approved" }
+      : { $and: [{ admin: email }, { status: "approved" }] }
+  );
+  res.status(200).json({
+    status: "success",
+    transactions,
+  });
+});
+
 module.exports.getAllTransactions = catchAsync(async (req, res, next) => {
   const { role, email } = req.user;
   const transactions = await TransactionModel.find(
@@ -205,7 +218,12 @@ module.exports.rewardTransaction = catchAsync(async (req, res, next) => {
 });
 
 module.exports.viewRewardedTransaction = catchAsync(async (req, res, next) => {
-  const transactions = await TransactionModel.find({ status: "rewarded" });
+  const { role, email } = req.user;
+  const transactions = await TransactionModel.find(
+    role !== "admin"
+      ? { status: "rewarded" }
+      : { $and: [{ status: "rewarded" }, { admin: email }] }
+  );
   res.status(200).json({
     status: "success",
     transactions,

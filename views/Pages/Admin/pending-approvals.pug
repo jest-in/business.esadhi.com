@@ -1,10 +1,10 @@
-extends ../../Layout/super-admin-layout
+extends ../../Layout/admin-layout
 
 block content
     .approvals-contect-container
       .approvals-contect-container-header
         h1
-          | Admins (
+          | Pending Approvals (
           span#transactionCount
           | )
         input#search-approvals(type="text", name="search", placeholder="Search")
@@ -18,9 +18,8 @@ block content
             .approval-contact-div
               h1 Contact
             .approval-admin-div
-              h1 Address
+              h1 Admin
             .approval-package-div
-              h1 Email
+              h1 Package
           hr.approval-hr
-        #transactions.        
-        
+        #transactions.

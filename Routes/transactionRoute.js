@@ -26,6 +26,13 @@ router
     Transaction.getAddedTransactions
   );
 router
+  .route("/view-approved")
+  .get(
+    AuthController.protect,
+    AuthController.restrictTo("super-admin", "admin"),
+    Transaction.getApprovedTransactions
+  );
+router
   .route("/")
   .get(
     AuthController.protect,
@@ -66,7 +73,7 @@ router
   .route("/rewarded-transactions")
   .get(
     AuthController.protect,
-    AuthController.restrictTo("super-admin"),
+    AuthController.restrictTo("super-admin", "admin"),
     Transaction.viewRewardedTransaction
   );
 

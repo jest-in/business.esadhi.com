@@ -6,13 +6,9 @@ const IdSchema = new mongoose.Schema({
     unique: true,
     required: [true, "Please provide user ID"],
   },
-  status: {
-    type: String,
-    default: "created",
-    enum: {
-      values: ["downloaded", "created"],
-      message: "{VALUE} is not supported",
-    },
+  date: {
+    type: Date,
+    required: [true, "Please provide Date"],
   },
 });
 

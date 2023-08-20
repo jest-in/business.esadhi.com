@@ -6,8 +6,6 @@ const errMsg = document.querySelector("#errMsg");
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const transactionId = urlParams.get("_id");
-console.log("Transaction ID:", transactionId);
 
 //For handling approve button
 const clientApproveButton = document.querySelector(
@@ -43,10 +41,10 @@ function hidingSuccessMark() {
 const form = document.getElementById("add-client-form");
 form.addEventListener("submit", function (event) {
   event.preventDefault(); //prevent from auto submit
+  const _id = document.getElementById("_id").value;
   const clientId = document.getElementById("client-id").value;
   const cnfClientId = document.getElementById("cnf-client-id").value;
   const cardNo = document.getElementById("client-card-no").value;
-  console.log(clientId, cnfClientId, cardNo);
 
   //Checking for empty fields
   if (clientId === "") {
@@ -70,8 +68,7 @@ form.addEventListener("submit", function (event) {
   }
 
   //checking for client-id and confirm client-id
-  const regexConfirmClientId = new RegExp(cnfClientId);
-  if (!regexConfirmClientId.test(clientId)) {
+  if (clientId !== cnfClientId) {
     errMsg.innerText = "Client ID is not Matching";
     userAlert.classList.remove("hidden");
     setTimeout(hidingPopup, 5000);
@@ -89,7 +86,7 @@ form.addEventListener("submit", function (event) {
       Connection: "keep-alive",
     },
     body: JSON.stringify({
-      id: transactionId,
+      id: _id,
       userId: clientId,
       cardNo: cardNo,
     }),
@@ -106,10 +103,7 @@ form.addEventListener("submit", function (event) {
           // Start the GIF animation (assuming it's an <img> element)
           const gifImage = successMark.querySelector("img");
           gifImage.src = gifImage.src; // This will reset the image and restart the animation
-          setTimeout(
-            () => (location.href = "http://127.0.0.1:5500/HTML/approvals.html"),
-            4000
-          );
+          setTimeout(() => (location.href = "/approvals"), 4000);
         }, 100);
       } else {
         console.log(res);

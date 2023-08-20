@@ -45,7 +45,7 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); //prevent from auto submit
   // const clientId = document.getElementById("client-id").value;
   const rewardRemarks = document.getElementById("rewardRemarks").value;
-  const clientId = "s1";
+  const clientId = document.getElementById("userId").value;
 
   //Checking for empty fields
   if (rewardRemarks === "") {
@@ -82,10 +82,7 @@ form.addEventListener("submit", function (event) {
           // Start the GIF animation (assuming it's an <img> element)
           const gifImage = successMark.querySelector("img");
           gifImage.src = gifImage.src; // This will reset the image and restart the animation
-          setTimeout(
-            () => (location.href = "http://127.0.0.1:5500/HTML/approvals.html"),
-            4000
-          );
+          setTimeout(() => (location.href = "/completed-rewards"), 4000);
         }, 100);
       } else {
         console.log(res);

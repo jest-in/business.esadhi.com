@@ -18,11 +18,11 @@ function generateUniqueUserId() {
 
 module.exports.createIds = async (req, res, next) => {
   let i = 0;
-  while (i < 1000) {
+  while (i < 10) {
     const userId = generateUniqueUserId();
     if (!(await Id.collection.findOne({ userId }))) {
       i++;
-      Id.create({ userId, status: "created" }).catch((err) => console.log(err));
+      Id.create({ userId, date: req.requestTime }).catch((err) => {});
     }
   }
   res.json({
@@ -43,9 +43,12 @@ module.exports.downloadIds = async (req, res, next) => {
     workSheetName,
     filepath
   ) => {
-    const data = IdList.map((user) => [user.userId]);
+    const data = IdList.map((user) => [
+      user.userId,
+      user.date.toLocaleString(),
+    ]);
     const workBook = xlsx.utils.book_new();
-    const workSheetData = [workSheetColumnNames, ...data];
+    const workSheetData = [...data];
     const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
     xlsx.utils.book_append_sheet(workBook, workSheet, workSheetName);
     xlsx.writeFile(workBook, path.resolve(filepath));

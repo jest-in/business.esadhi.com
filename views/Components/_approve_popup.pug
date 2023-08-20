@@ -11,6 +11,7 @@
         h2 4999
     form.popup-client-entries-form#add-client-form(action)
       .popup-input-entries-div
+        input#_id(type="hidden", name="_id", value=_id)
         label(for="client-id") Enter Client ID
         input#client-id(type="text")
       .popup-input-entries-div

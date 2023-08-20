@@ -1,4 +1,5 @@
 const TransactionModel = require("../Models/transactionModel");
+const IdModel = require("../Models/idModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -85,6 +86,7 @@ module.exports.addTransaction = catchAsync(async (req, res, next) => {
       admin: req.user.email,
       status: "added",
       category,
+      addedDate: req.requestTime,
     };
     if (await TransactionModel.create(transaction))
       res.status(200).json({
@@ -148,13 +150,17 @@ module.exports.approveTransaction = catchAsync(async (req, res, next) => {
     })
   )
     return next(new AppError("Already approved.", 400));
-  // Approved
+  // Check whether user id exists
+  if (!(await IdModel.exists({ userId })))
+    return next(new AppError("User Id does not exists", 400));
+  // Approve
   if (
     await TransactionModel.updateOne(
       { _id: id },
       {
         userId,
         status: "approved",
+        approvedDate: req.requestTime,
       }
     )
   )
@@ -207,7 +213,7 @@ module.exports.rewardTransaction = catchAsync(async (req, res, next) => {
     if (
       await TransactionModel.findOneAndUpdate(
         { userId },
-        { status: "rewarded", rewardRemarks }
+        { status: "rewarded", rewardRemarks, rewardedDate: req.requestTime }
       )
     )
       res.status(200).json({

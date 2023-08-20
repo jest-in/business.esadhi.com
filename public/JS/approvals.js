@@ -72,6 +72,6 @@ function handleTransactionClick(event) {
   const transactionId = event.currentTarget.getAttribute("data-transaction-id");
   console.log(transactionId);
   if (transactionId) {
-    window.location.href = `users/${transactionId}`;
+    window.location.href = `approve/${transactionId}`;
   }
 }

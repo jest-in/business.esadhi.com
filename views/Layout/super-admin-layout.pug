@@ -3,6 +3,11 @@ meta(name="viewport", content="width=device-width,initial-scale=1")
 title Dashboard | esadhi
 link(rel="stylesheet", href="/CSS/style.css")
 .dashboard-container
+  if(popup)
+    if(popup==="Approve")
+      include ../Components/_approve_popup.pug
+    else if(popup==="Reward")
+      include ../Components/_reward_popup.pug
   nav.dash-nav-container
     a.nav-logo-div(href="/dashboard")
       img(src="/Source/Logo.svg", alt)
@@ -53,7 +58,7 @@ link(rel="stylesheet", href="/CSS/style.css")
         h2 Reset Password
   .dashboard-content-container
     .dashboard-content-header-div
-      h1 Overview
+      h1 #{heading}
       h3
         | Welcome Back 
         span Brijesh

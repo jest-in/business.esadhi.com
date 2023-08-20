@@ -1,0 +1,22 @@
+.screen-popup-back.hidden
+  .screen-popup-div.hidden
+    .popup-head-text-div
+      h1 Are you sure ?
+    .popup-confirm-details-div
+      .popup-confirm-name-div
+        h1 Name
+        h2 #{name}
+      .popup-confirm-name-div
+        h1 Package
+        h2 #{category}
+    form.popup-client-entries-form#add-client-form(action)
+      .popup-input-entries-div
+        label(for="client-id") Remarks
+        input#rewardRemarks(type="text")
+      label.login-error-label.popup-error-msg.hidden#errMsg(for="error") Display Error Here
+      label.popup-warning-message(for="warning-msg") This Transaction cannot be Undone
+      .popup-submit-cancel-btn-div
+        input.popup-sumbit-btn(type="submit", value="Submit")
+        button.popup-cancel-btn(type="button") Cancel
+  .popup-checkmark-container.hidden
+    img(src="/Source/check-mark.gif", alt="success-animation")

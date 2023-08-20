@@ -1,0 +1,55 @@
+.approvals-contect-container
+  .approvals-contect-container-header
+    h1.client-individual-name #{name}
+    button.client-individual-approve-btn #{popup}
+  .client-individual-details-container
+    .client-individual-details-div
+      .client-individual-details-data-sec
+        h1 Admin Name
+        h2 #{admin}
+      .client-individual-details-data-sec
+        h1 Package
+        h2 #{category}
+      .client-individual-details-data-sec
+        h1 User ID
+        h2 #{userId}
+    hr.approval-hr
+    .client-individual-details-div
+      .client-individual-details-data-sec
+        h1 Contact
+        h2 #{phoneNo}
+      .client-individual-details-data-sec
+        h1 Email Address
+        h2 #{email}
+      .client-individual-details-data-sec
+        h1 Address
+        h2 #{address}
+    hr.approval-hr
+    .client-individual-tree-struct-container
+      .client-tree-struct-div
+        .client-tree-father-div
+          img(src="/Source/adminTreeIcon.svg", alt)
+          h3 #{parentName}
+          hr.client-tree-father-hr
+        .client-tree-father-div
+          img(src="/Source/currentTreeIcon.svg", alt)
+          h3 #{name}
+          hr.client-tree-father-hr
+        hr.client-under-hor-hr
+        .client-tree-under-tree-container
+          .client-tree-father-div
+            hr.client-tree-father-hr
+            img(src="/Source/underTreeIcon.svg", alt)
+            h3 Nil
+          .client-tree-father-div
+            hr.client-tree-father-hr
+            img(src="/Source/underTreeIcon.svg", alt)
+            h3 Nil
+          .client-tree-father-div
+            hr.client-tree-father-hr
+            img(src="/Source/underTreeIcon.svg", alt)
+            h3 Nil
+          .client-tree-father-div
+            hr.client-tree-father-hr
+            img(src="/Source/underTreeIcon.svg", alt)
+            h3 Nil

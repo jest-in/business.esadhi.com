@@ -43,43 +43,20 @@ function hidingSuccessMark() {
 const form = document.getElementById("add-client-form");
 form.addEventListener("submit", function (event) {
   event.preventDefault(); //prevent from auto submit
-  const clientId = document.getElementById("client-id").value;
-  const cnfClientId = document.getElementById("cnf-client-id").value;
-  const cardNo = document.getElementById("client-card-no").value;
-  console.log(clientId, cnfClientId, cardNo);
+  // const clientId = document.getElementById("client-id").value;
+  const rewardRemarks = document.getElementById("rewardRemarks").value;
+  const clientId = "s1";
 
   //Checking for empty fields
-  if (clientId === "") {
-    errMsg.innerText = "Please Enter Client ID";
+  if (rewardRemarks === "") {
+    errMsg.innerText = "Please Enter Remarks";
     userAlert.classList.remove("hidden");
     setTimeout(hidingPopup, 5000);
     document.getElementById("client-id").focus();
     return;
-  } else if (cnfClientId === "") {
-    errMsg.innerText = "Please Confirm Client ID";
-    userAlert.classList.remove("hidden");
-    setTimeout(hidingPopup, 5000);
-    document.getElementById("cnf-client-id").focus();
-    return;
-  } else if (cardNo === "") {
-    errMsg.innerText = "Please Enter Card No";
-    userAlert.classList.remove("hidden");
-    setTimeout(hidingPopup, 5000);
-    document.getElementById("client-card-no").focus();
-    return;
   }
 
-  //checking for client-id and confirm client-id
-  const regexConfirmClientId = new RegExp(cnfClientId);
-  if (!regexConfirmClientId.test(clientId)) {
-    errMsg.innerText = "Client ID is not Matching";
-    userAlert.classList.remove("hidden");
-    setTimeout(hidingPopup, 5000);
-    document.getElementById("cnf-client-id").focus();
-    return;
-  }
-
-  const result = fetch("http://localhost:3000/api/transactions/approve", {
+  const result = fetch("http://localhost:3000/api/transactions/reward", {
     credentials: "include",
     method: "PATCH",
     headers: {
@@ -89,9 +66,8 @@ form.addEventListener("submit", function (event) {
       Connection: "keep-alive",
     },
     body: JSON.stringify({
-      id: transactionId,
       userId: clientId,
-      cardNo: cardNo,
+      rewardRemarks: rewardRemarks,
     }),
   })
     .then((res) => res.json()) //Parsing to json

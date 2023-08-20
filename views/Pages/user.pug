@@ -10,10 +10,10 @@ link(rel="stylesheet", href="/CSS/style.css")
       .popup-confirm-details-div
         .popup-confirm-name-div
           h1 Name
-          h2 #{name}
+          h2 Jestin George
         .popup-confirm-name-div
-          h1 Package
-          h2 #{category}
+          h1 Amount
+          h2 4999
       form.popup-client-entries-form#add-client-form(action)
         .popup-input-entries-div
           label(for="client-id") Enter Client ID
@@ -27,56 +27,70 @@ link(rel="stylesheet", href="/CSS/style.css")
         label.login-error-label.popup-error-msg.hidden#errMsg(for="error") Display Error Here
         label.popup-warning-message(for="warning-msg") This Transaction cannot be Undone
         .popup-submit-cancel-btn-div
-          input#_id(type="hidden", name="_id", value=_id)
           input.popup-sumbit-btn(type="submit", value="Submit")
           button.popup-cancel-btn(type="button") Cancel
     .popup-checkmark-container.hidden
       img(src="/Source/check-mark.gif", alt="success-animation")
   nav.dash-nav-container
-    a.nav-logo-div(href="#")
+    a.nav-logo-div(href="/HTML/dashboard.html")
       img(src="/Source/Logo.svg", alt)
-    a.nav-items-container(href="/dashboard")
+    a.nav-items-container(href="/HTML/dashboard.html")
       .nav-items-icon-div
         img(src="/Source/overviewIcon.svg", alt="overview icon")
       .nav-items-name-div
-        h2.nav-items-name-div Overview
-    a.nav-items-container.nav-items-container-selected(href="#")
-      .nav-items-icon-div
-        img.nav-items-icon-selected(src="/Source/approveIcon.svg", alt="overview icon")
+        h2 Overview
+    a.nav-items-container.nav-items-container-selected(href="/HTML/approvals.html")
+      .nav-items-icon-div.nav-items-icon-selected
+        img(src="/Source/approveIcon.svg", alt="approve icon")
       .nav-items-name-div
-        h2.nav-items-selected Approve
-    a.nav-items-container(href="#")
+        h2.nav-items-selected Approval
+    a.nav-items-container(href="/HTML/pending-rewards.html")
       .nav-items-icon-div
         img(src="/Source/pendingRewardsIcon.svg", alt="pending rewards icon")
       .nav-items-name-div
         h2 Pending Rewards
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/HTML/completed-rewards.html")
       .nav-items-icon-div
         img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
       .nav-items-name-div
         h2 Completed Rewards
-    a.nav-items-container(href="#")
+    a.nav-items-container(href="/HTML/all-admins.html")
       .nav-items-icon-div
         img(src="/Source/agentsIcon.svg", alt="cAgents icon")
       .nav-items-name-div
-        h2 Agents
+        h2 Admins
+    a.nav-items-container(href="/HTML/add-admin.html")
+      .nav-items-icon-div
+        img(src="/Source/addClientIcon.svg", alt="cAgents icon")
+      .nav-items-name-div
+        h2 Add Admin
+    a.nav-items-container(href="/HTML/reset-admin.html")
+      .nav-items-icon-div
+        img(src="/Source/blockAdmin.svg", alt="cAgents icon")
+      .nav-items-name-div
+        h2 Reset Admin
     a.nav-items-container(href="#")
       .nav-items-icon-div
         img(src="/Source/clientsIcon.svg", alt="Clients icon")
       .nav-items-name-div
         h2 Clients
+    a.nav-items-container(href="/HTML/supradmn-reset-password.html")
+      .nav-items-icon-div
+        img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
+      .nav-items-name-div
+        h2 Reset Password
   .dashboard-content-container
     .dashboard-content-header-div
       h1 Approvals
       h3
-        | Hello 
+        | Keep Leading 
         span Super Admin
         | !!!
       a(href="#")
         img(src="/Source/logoutIcon.svg", alt="logout icon")
     .approvals-contect-container
       .approvals-contect-container-header
-        h1.client-individual-name Jestin George
+        h1.client-individual-name #{name}
         button.client-individual-approve-btn Approve
       .client-individual-details-container
         .client-individual-details-div

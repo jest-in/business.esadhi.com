@@ -78,10 +78,16 @@ router
     ViewController.resetPassword
   )
   .get(
-    "/users/:id",
+    "/approve/:id",
     AuthController.protect,
     AuthController.restrictTo("super-admin"),
-    ViewController.user
+    ViewController.approve
+  )
+  .get(
+    "/reward/:id",
+    AuthController.protect,
+    AuthController.restrictTo("super-admin"),
+    ViewController.reward
   );
 
 module.exports = router;

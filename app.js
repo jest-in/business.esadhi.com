@@ -6,9 +6,8 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 const url = require("url");
-
-const cors = require("cors");
 
 const TransactionRoute = require("./Routes/transactionRoute");
 const viewRoute = require("./Routes/viewRoute");
@@ -19,14 +18,6 @@ const globalErrorHandler = require("./Controllers/errorController");
 const AppError = require("./utils/appError");
 
 const app = express();
-
-// For CORS
-app.use(
-  cors({
-    credentials: true,
-    origin: "http://127.0.0.1:5500",
-  })
-);
 
 // Global middlewares
 
@@ -58,6 +49,8 @@ app.use(hpp());
 
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(compression());
 
 app.use((req, res, next) => {
   const { query } = url.parse(req.url, true);

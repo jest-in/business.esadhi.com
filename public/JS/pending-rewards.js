@@ -3,7 +3,7 @@
 const transactionsContainer = document.getElementById("transactions");
 const transactionCountElement = document.getElementById("transactionCount");
 
-fetch("http://localhost:3000/api/transactions/reward-eleigibles", {
+fetch("/api/transactions/reward-eleigibles", {
   credentials: "include",
   method: "GET",
   headers: {

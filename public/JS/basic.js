@@ -3,7 +3,7 @@
 // Function for logout
 const logoutBtn = document.getElementById("logout-icon-btn");
 logoutBtn.addEventListener("click", function (event) {
-  const result = fetch("http://localhost:3000/api/logout", {
+  const result = fetch("/api/logout", {
     credentials: "include",
     method: "GET",
     headers: {

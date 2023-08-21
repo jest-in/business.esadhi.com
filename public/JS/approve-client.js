@@ -76,7 +76,7 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  const result = fetch("http://localhost:3000/api/transactions/approve", {
+  const result = fetch("/api/transactions/approve", {
     credentials: "include",
     method: "PATCH",
     headers: {

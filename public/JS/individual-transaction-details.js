@@ -3,7 +3,7 @@
 // const transactionId = urlParams.get('transaction_id');
 
 // // Fetch the user details using the transactionId
-// fetch(`http://localhost:3000/api/transactions/user-details`,
+// fetch(`/api/transactions/user-details`,
 // {
 //       credentials: "include",
 //       method: "PATCH",

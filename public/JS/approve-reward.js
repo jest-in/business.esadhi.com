@@ -56,7 +56,7 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  const result = fetch("http://localhost:3000/api/transactions/reward", {
+  const result = fetch("/api/transactions/reward", {
     credentials: "include",
     method: "PATCH",
     headers: {

@@ -86,7 +86,7 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  const result = fetch("http://localhost:3000/api/transactions/add", {
+  const result = fetch("/api/transactions/add", {
     credentials: "include",
     method: "POST",
     headers: {
@@ -116,12 +116,7 @@ form.addEventListener("submit", function (event) {
           // Start the GIF animation (assuming it's an <img> element)
           const gifImage = successMark.querySelector("img");
           gifImage.src = gifImage.src; // This will reset the image and restart the animation
-          setTimeout(
-            () =>
-              (location.href =
-                "http://127.0.0.1:5500/HTML/admin-dashboard.html"),
-            4000
-          );
+          setTimeout(() => (location.href = "/admin/dashboard"), 4000);
         }, 100);
       } else {
         errMsg.innerText = res.message;

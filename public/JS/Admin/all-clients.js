@@ -8,7 +8,7 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-fetch("http://localhost:3000/api/transactions", {
+fetch("/api/transactions", {
   credentials: "include",
   method: "GET",
   headers: {

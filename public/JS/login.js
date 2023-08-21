@@ -32,7 +32,7 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  const result = fetch("http://localhost:3000/api/login", {
+  const result = fetch("/api/login", {
     // credentials: "include",
     method: "POST",
     headers: {

@@ -52,7 +52,7 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  const result = fetch("http://localhost:3000/api/reset-password", {
+  const result = fetch("/api/reset-password", {
     credentials: "include",
     method: "PATCH",
     headers: {
@@ -80,10 +80,7 @@ form.addEventListener("submit", function (event) {
           // Start the GIF animation (assuming it's an <img> element)
           const gifImage = successMark.querySelector("img");
           gifImage.src = gifImage.src; // This will reset the image and restart the animation
-          setTimeout(
-            () => (location.href = "http://127.0.0.1:5500/HTML/login.html"),
-            4000
-          );
+          setTimeout(() => (location.href = "/"), 4000);
         }, 100);
       } else {
         errMsg.innerText = res.message;

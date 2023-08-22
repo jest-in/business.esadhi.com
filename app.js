@@ -48,7 +48,7 @@ app.use(xss());
 app.use(hpp());
 
 // Serving static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
 app.use(compression());
 

@@ -138,7 +138,7 @@ module.exports.viewAdmin = catchAsync(async (req, res, next) => {
   res.status(200).render(
     "Pages/Super-admin/admin",
     Object.assign(admin, {
-      heading: "User Details",
+      heading: "Admin Details",
       scripts: ["/JS/basic.js"],
     })
   );

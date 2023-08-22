@@ -3,8 +3,8 @@ extends ../../Layout/super-admin-layout
 block content
   .add-client-container
     form#form.add-client-form(autocomplete="off", action)
-      .add-client-form-container.reset-pass-form-container-updated
-        .add-client-form-div1.reset-pass-form-div1
+      .reset-pass-form-container-updated
+        .reset-pass-form-div1
           .add-client-form-ele1
             label(for="name") Email
             input.login-entries-input#email(type="email", name="password")
@@ -14,6 +14,6 @@ block content
           .add-client-form-ele1
             label(for="name") Confirm Password
             input.login-entries-input#cnf-password(type="password", name="cnf-password")
-      .add-client-form-div3
-        label.login-error-label.hidden#errMsg(for="error") Display Error Here
-        input.login-entries-submit(type="submit", value="Change")
+        .add-client-form-div3.reset-pass-add-client-form-div3
+          label.login-error-label.hidden#errMsg(for="error") Display Error Here
+          input.login-entries-submit(type="submit", value="Change")

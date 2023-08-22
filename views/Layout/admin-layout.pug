@@ -2,7 +2,11 @@ meta(charset="UTF-8")
 meta(name="viewport", content="width=device-width,initial-scale=1")
 title Clients | esadhi
 link(rel="stylesheet", href="/CSS/style.css")
+link(rel="stylesheet", href="/CSS/media-query.css")
 .dashboard-container
+  if(popup)
+    if(popup==="success")
+      include ../Components/_success.pug
   nav.dash-nav-container
     a.nav-logo-div(href="/admin/dashboard")
       img(src="/Source/Logo.svg", alt)

@@ -55,7 +55,7 @@ const main = async () => {
   } else {
     User.create({
       name: "vaasu annan",
-      email: "vaasu@gmail.com",
+      email: "sa@g.com",
       password: password,
     }).then(() => {
       console.log("Successfully created super-admin");

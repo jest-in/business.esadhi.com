@@ -1,0 +1,694 @@
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 450px) {
+    *{
+        font-size: 45%;
+    }
+
+    .login-container{
+        height: fit-content;
+        padding: 80px 0;
+    }
+
+    .login-entries-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-sub-container{
+        flex-direction: column;
+        width: 80%;
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 50px 50px;
+    }
+
+    .wel-back-txt{
+        font-size: 3rem;
+    }
+    
+    .login-entries-input,.login-entries-submit{
+        width: 240px;
+    }
+
+    .login-img-div img{
+        width: 300px;
+        margin-top: 20px;
+    }
+    
+    .dashboard-container{
+        flex-direction: column;
+        padding: 10px;
+        height: 100vh;
+    }
+
+    .dash-nav-container{
+        padding: 0;
+        width: 100%;
+        height: fit-content;  
+        background: none; 
+        z-index: 500;
+        box-shadow: none;
+    }
+
+    .dash-nav-inner-container{
+        width: 90%;
+        display: none;
+        position: fixed;
+        top: 60px;
+        background-color: #171031;
+        border-radius: 10px;
+        padding: 20px 10px;
+        overflow: hidden;
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .dash-nav-open-close-icon-div{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .dash-nav-open-close-icon-div img{
+        width: 23px;
+    }
+
+    .dash-nav-open-close-icon-div img:hover{
+        filter: invert(52%) sepia(14%) saturate(6506%) hue-rotate(330deg) brightness(104%) contrast(99%);
+        cursor: pointer;
+    }
+
+    .dashboard-content-container{
+        width: 100%;
+        padding: 0;
+    }
+
+    .dashboard-content-header-div{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dashboard-content-header-div h1{
+        width: fit-content;
+    }
+
+    .dashboard-content-header-div img{
+        align-self: flex-end;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+
+    .dashboard-container-sub1{
+        flex-direction: column;
+    }
+
+    .dash-content-box{
+        width: 90%;
+        margin-top: 20px;
+        padding: 20px 10px;
+        flex-direction: column;
+    }
+
+    .dashboard-container-sub2{
+        display: none;
+    }
+
+    .approvals-contect-container-header{
+        flex-direction: column;
+    }
+
+    .approvals-contect-container-header h1{
+        margin-bottom: 20px;
+    }
+
+    .approval-slno-div{
+        width: 10%;
+    }
+
+    .approval-name-div{
+        width: 35%;
+    }
+
+    .approval-contact-div, .approval-package-div{
+        display: none;
+    }
+
+    .approval-admin-div{
+        width: 55%;
+    }
+
+    .approvals-contect-container{
+        height: 80%;
+    }
+
+    .client-individual-details-div{
+        margin-top: 20px;
+    }
+
+    .client-individual-details-data-sec{
+        margin-top: 20px;
+        word-wrap: break-word;
+    }
+
+    .approve-table-content-hover{
+        word-wrap: break-word;
+    }
+
+    .add-client-form{
+        width: 70%;
+    }
+
+    .add-client-form-container{
+        flex-direction: column;
+    }
+
+    .add-client-form-div1,.add-client-form-div2{
+        padding: 0;
+        width: 100%;
+    }
+
+    .add-client-form-ele1{
+        margin-top: 30px;
+    }
+
+    .add-client-form-div3 input{
+        margin-top: 30px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 450px) and (max-width: 576px) {
+    *{
+        font-size:48%;
+    }
+
+    .login-container{
+        height: fit-content;
+        padding: 80px 0;
+    }
+
+    .login-entries-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-sub-container{
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 50px 50px;
+    }
+
+    .wel-back-txt{
+        font-size: 3rem;
+    }
+    
+    .login-entries-input,.login-entries-submit{
+        width: 260px;
+    }
+
+    .login-img-div img{
+        width: 300px;
+        margin-top: 20px;
+    }
+
+    .dashboard-container{
+        flex-direction: column;
+        padding: 10px;
+        height: 100vh;
+    }
+
+    .dash-nav-container{
+        padding: 0;
+        width: 100%;
+        height: fit-content;  
+        background: none; 
+        z-index: 500;
+        box-shadow: none;
+    }
+
+    .dash-nav-inner-container{
+        width: 90%;
+        display: none;
+        position: fixed;
+        top: 60px;
+        background-color: #171031;
+        border-radius: 10px;
+        padding: 20px 10px;
+        overflow: hidden;
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .dash-nav-open-close-icon-div{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .dash-nav-open-close-icon-div img{
+        width: 23px;
+    }
+
+    .dash-nav-open-close-icon-div img:hover{
+        filter: invert(52%) sepia(14%) saturate(6506%) hue-rotate(330deg) brightness(104%) contrast(99%);
+        cursor: pointer;
+    }
+
+    .dashboard-content-container{
+        width: 100%;
+        padding: 0;
+    }
+
+    .dashboard-content-header-div{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dashboard-content-header-div h1{
+        width: fit-content;
+    }
+
+    .dashboard-content-header-div img{
+        align-self: flex-end;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+
+    .dashboard-container-sub1{
+        flex-direction: column;
+    }
+
+    .dash-content-box{
+        width: 90%;
+        margin-top: 20px;
+        padding: 20px 10px;
+        flex-direction: column;
+    }
+
+    .dashboard-container-sub2{
+        display: none;
+    }
+
+    .approvals-contect-container-header{
+        flex-direction: column;
+    }
+
+    .approvals-contect-container-header h1{
+        margin-bottom: 20px;
+    }
+
+    .approval-slno-div{
+    width: 10%;
+    }
+
+    .approval-name-div{
+        width: 35%;
+    }
+
+    .approval-contact-div{
+        width: 30%;
+    }
+
+    .approval-package-div{
+        display: none;
+    }
+
+    .approval-admin-div{
+        width: 25%;
+    }
+
+    .approvals-contect-container{
+        height: 80%;
+    }
+
+    .client-individual-details-div{
+        margin-top: 20px;
+    }
+
+    .client-individual-details-data-sec{
+        margin-top: 20px;
+        word-wrap: break-word;
+    }
+
+    .approve-table-content-hover{
+        word-wrap: break-word;
+    }
+
+    .add-client-form{
+        width: 50%;
+    }
+
+    .add-client-form-container{
+        flex-direction: column;
+    }
+
+    .add-client-form-div1,.add-client-form-div2{
+        padding: 0;
+        width: 100%;
+    }
+
+    .add-client-form-ele1{
+        margin-top: 30px;
+    }
+
+    .add-client-form-div3 input{
+        margin-top: 30px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 768px) {
+   *{
+        font-size: 50%;
+    }
+
+    .login-container{
+        height: fit-content;
+        padding: 80px 0;
+    }
+
+    .login-entries-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-sub-container{
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 50px 50px;
+    }
+
+    .wel-back-txt{
+        font-size: 3rem;
+    }
+    
+    .login-entries-input,.login-entries-submit{
+        width: 280px;
+    }
+
+    .login-img-div img{
+        width: 300px;
+        margin-top: 20px;
+    }
+
+    .dashboard-container{
+        flex-direction: column;
+        padding: 10px;
+        height: fit-content;
+        height: 100vh;
+    }
+
+    .dash-nav-container{
+        padding: 0;
+        width: 100%;
+        height: fit-content;  
+        background: none; 
+        z-index: 500;
+        box-shadow: none;
+    }
+
+    .dashboard-content-container{
+        padding: 50px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .dash-nav-inner-container{
+        width: 90%;
+        display: none;
+        position: fixed;
+        top: 60px;
+        background-color: #171031;
+        border-radius: 10px;
+        padding: 20px 10px;
+        overflow: hidden;
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .dash-nav-open-close-icon-div{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .dash-nav-open-close-icon-div img{
+        width: 23px;
+    }
+
+    .dash-nav-open-close-icon-div img:hover{
+        filter: invert(52%) sepia(14%) saturate(6506%) hue-rotate(330deg) brightness(104%) contrast(99%);
+        cursor: pointer;
+    }
+
+    .dash-content-box{
+        width: 90%;
+        margin-top: 20px;
+        padding: 20px 10px;
+        /* flex-direction: column; */
+    }
+
+    .dashboard-container-sub1{
+        flex-direction: column;
+    }
+
+    .dashboard-container-sub2{
+        width: 90%;
+        margin-bottom: 50px;
+    }
+
+    .approval-slno-div{
+    width: 10%;
+    }
+
+    .approval-name-div{
+        width: 35%;
+    }
+
+    .approval-contact-div{
+        width: 30%;
+    }
+
+    .approval-package-div{
+        display: none;
+    }
+
+    .approval-admin-div{
+        width: 25%;
+    }
+
+    .approve-table-content-hover{
+        word-wrap: break-word;
+    }
+
+    .add-client-form{
+        width: 100%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+    *{
+        font-size: 55%;
+    }
+
+    .login-container{
+        height: 100vh;
+        padding: 80px 0;
+    }
+
+    .login-entries-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-sub-container{
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 50px 50px;
+    }
+
+    .wel-back-txt{
+        font-size: 3rem;
+    }
+    
+    .login-entries-input,.login-entries-submit{
+        width: 280px;
+    }
+
+    .login-img-div img{
+        width: 320px;
+        margin-top: 20px;
+    }
+
+    .dashboard-container{
+        flex-direction: column;
+        padding: 10px;
+        height: fit-content;
+        height: 100vh;
+    }
+
+    .dash-nav-container{
+        padding: 0;
+        width: 100%;
+        height: fit-content;  
+        background: none; 
+        z-index: 500;
+        box-shadow: none;
+    }
+
+    .dashboard-content-container{
+        padding: 50px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .dash-nav-inner-container{
+        width: 90%;
+        display: none;
+        position: fixed;
+        top: 60px;
+        background-color: #171031;
+        border-radius: 10px;
+        padding: 20px 10px;
+        overflow: hidden;
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .dash-nav-open-close-icon-div{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .dash-nav-open-close-icon-div img{
+        width: 23px;
+    }
+
+    .dash-nav-open-close-icon-div img:hover{
+        filter: invert(52%) sepia(14%) saturate(6506%) hue-rotate(330deg) brightness(104%) contrast(99%);
+        cursor: pointer;
+    }
+
+    .dash-content-box{
+        width: 90%;
+        margin-top: 20px;
+        padding: 20px 10px;
+        /* flex-direction: column; */
+    }
+
+    .dashboard-container-sub1{
+        flex-direction: column;
+    }
+
+    .dashboard-container-sub2{
+        width: 90%;
+        margin-bottom: 50px;
+    }
+
+    .approvals-contect-container-header{
+        flex-direction: column;
+    }
+
+    .approvals-contect-container-header h1{
+        margin-bottom: 20px;
+    }
+
+    .approval-slno-div{
+    width: 5%;
+    }
+
+    .approval-name-div{
+        width: 35%;
+    }
+
+    .approval-contact-div{
+        width: 20%;
+    }
+
+    .approval-package-div{
+        display: none;
+    }
+
+    .approval-admin-div{
+        width: 40%;
+    }
+
+    .add-client-form{
+        width: 90%;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    *{
+        font-size: 60%;
+    }
+
+    .login-container{
+        height: 100vh;
+        padding: 80px 0;
+    }
+
+    .login-entries-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-sub-container{
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 50px 50px;
+    }
+
+    .wel-back-txt{
+        font-size: 3rem;
+    }
+    
+    .login-entries-input,.login-entries-submit{
+        width: 280px;
+    }
+
+    .login-img-div img{
+        width: 320px;
+        margin-top: 20px;
+    }
+
+    .add-client-form{
+        width: 90%;
+    }
+}

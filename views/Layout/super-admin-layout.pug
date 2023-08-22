@@ -2,60 +2,68 @@ meta(charset="UTF-8")
 meta(name="viewport", content="width=device-width,initial-scale=1")
 title Dashboard | esadhi
 link(rel="stylesheet", href="/CSS/style.css")
+link(rel="stylesheet", href="/CSS/media-query.css")
 .dashboard-container
   if(popup)
     if(popup==="Approve")
       include ../Components/_approve_popup.pug
     else if(popup==="Reward")
       include ../Components/_reward_popup.pug
+    else if(popup==="success")
+      include ../Components/_success.pug
   nav.dash-nav-container
-    a.nav-logo-div(href="/dashboard")
-      img(src="/Source/Logo.svg", alt)
-    a.nav-items-container.nav-items-container-selected(href="/dashboard")
-      .nav-items-icon-div
-        img(src="/Source/overviewIcon.svg", alt="overview icon")
-      .nav-items-name-div
-        h2.nav-items-selected Overview
-    a.nav-items-container(href="/approvals")
-      .nav-items-icon-div
-        img(src="/Source/approveIcon.svg", alt="approve icon")
-      .nav-items-name-div
-        h2 Approval
-    a.nav-items-container(href="/pending-rewards")
-      .nav-items-icon-div
-        img(src="/Source/pendingRewardsIcon.svg", alt="pending rewards icon")
-      .nav-items-name-div
-        h2 Pending Rewards
-    a.nav-items-container(href="/completed-rewards")
-      .nav-items-icon-div
-        img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Completed Rewards
-    a.nav-items-container(href="/admins")
-      .nav-items-icon-div
-        img(src="/Source/agentsIcon.svg", alt="cAgents icon")
-      .nav-items-name-div
-        h2 Admins
-    a.nav-items-container(href="/add-admin")
-      .nav-items-icon-div
-        img(src="/Source/addClientIcon.svg", alt="cAgents icon")
-      .nav-items-name-div
-        h2 Add Admin
-    a.nav-items-container(href="/reset-admin")
-      .nav-items-icon-div
-        img(src="/Source/blockAdmin.svg", alt="cAgents icon")
-      .nav-items-name-div
-        h2 Reset Admin
-    a.nav-items-container(href="/clients")
-      .nav-items-icon-div
-        img(src="/Source/clientsIcon.svg", alt="Clients icon")
-      .nav-items-name-div
-        h2 Clients
-    a.nav-items-container(href="/reset-password")
-      .nav-items-icon-div
-        img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Reset Password
+    .dash-nav-open-close-icon-div
+      img.menuOpenBtn(src="/Source/menuIcon.svg", alt="menu icon")
+      img.menuCloseBtn.hidden(src="/Source/menuCloseIcon.svg", alt="menu close icon")
+    .dash-nav-inner-container  
+      a.nav-logo-div(href="/dashboard")
+        img(src="/Source/Logo.svg", alt)
+      //- a(class="nav-items-container" class=selected==="dashboard"&&"nav-items-container-selected")(href="/dashboard")
+      a.nav-items-container(class=selected==="dashboard"&&"nav-items-container-selected" href="/dashboard")
+        .nav-items-icon-div(class=selected==="dashboard"&&"nav-items-icon-selected")
+          img(src="/Source/overviewIcon.svg", alt="overview icon")
+        .nav-items-name-div
+          h2(class=selected==="dashboard"&&"nav-items-selected") Overview
+      a.nav-items-container(class=selected==="approvals"&&"nav-items-container-selected" href="/approvals")
+        .nav-items-icon-div(class=selected==="approvals"&&"nav-items-icon-selected")
+          img(src="/Source/approveIcon.svg", alt="approve icon")
+        .nav-items-name-div
+          h2(class=selected==="approvals"&&"nav-items-selected") Approval
+      a.nav-items-container(class=selected==="pending-rewards"&&"nav-items-container-selected" href="/pending-rewards")
+        .nav-items-icon-div(class=selected==="pending-rewards"&&"nav-items-icon-selected")
+          img(src="/Source/pendingRewardsIcon.svg", alt="pending rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="pending-rewards"&&"nav-items-selected") Pending Rewards
+      a.nav-items-container(class=selected==="completed-rewards"&&"nav-items-container-selected" href="/completed-rewards")
+        .nav-items-icon-div(class=selected==="completed-rewards"&&"nav-items-icon-selected")
+          img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="completed-rewards"&&"nav-items-selected") Completed Rewards
+      a.nav-items-container(class=selected==="admins"&&"nav-items-container-selected" href="/admins")
+        .nav-items-icon-div(class=selected==="admins"&&"nav-items-icon-selected")
+          img(src="/Source/agentsIcon.svg", alt="cAgents icon")
+        .nav-items-name-div
+          h2(class=selected==="admins"&&"nav-items-selected") Admins
+      a.nav-items-container(class=selected==="add-admin"&&"nav-items-container-selected" href="/add-admin")
+        .nav-items-icon-div(class=selected==="add-admin"&&"nav-items-icon-selected")
+          img(src="/Source/addClientIcon.svg", alt="cAgents icon")
+        .nav-items-name-div
+          h2(class=selected==="add-admin"&&"nav-items-selected") Add Admin
+      a.nav-items-container(class=selected==="reset-admin"&&"nav-items-container-selected" href="/reset-admin")
+        .nav-items-icon-div(class=selected==="reset-admin"&&"nav-items-icon-selected")
+          img(src="/Source/blockAdmin.svg", alt="cAgents icon")
+        .nav-items-name-div
+          h2(class=selected==="reset-admin"&&"nav-items-selected") Reset Admin
+      a.nav-items-container(class=selected==="clients"&&"nav-items-container-selected" href="/clients")
+        .nav-items-icon-div(class=selected==="clients"&&"nav-items-icon-selected")
+          img(src="/Source/clientsIcon.svg", alt="Clients icon")
+        .nav-items-name-div
+          h2(class=selected==="clients"&&"nav-items-selected") Clients
+      a.nav-items-container(class=selected==="reset-password"&&"nav-items-container-selected" href="/reset-password")
+        .nav-items-icon-div(class=selected==="reset-password"&&"nav-items-icon-selected")
+          img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="reset-password"&&"nav-items-selected") Reset Password
   .dashboard-content-container
     .dashboard-content-header-div
       h1 #{heading}

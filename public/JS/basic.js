@@ -26,3 +26,20 @@ logoutBtn.addEventListener("click", function (event) {
       return;
     });
 });
+
+//For handling menu button
+const menuButton = document.querySelector(".menuOpenBtn");
+const menuCloseButton = document.querySelector(".menuCloseBtn");
+const navBar = document.querySelector(".dash-nav-inner-container");
+
+menuButton.addEventListener("click", function () {
+  menuButton.classList.add("hidden");
+  menuCloseButton.classList.remove("hidden");
+  navBar.style.display = "flex";
+});
+
+menuCloseButton.addEventListener("click", function () {
+  menuCloseButton.classList.add("hidden");
+  menuButton.classList.remove("hidden");
+  navBar.style.display = "none";
+});

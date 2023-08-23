@@ -163,25 +163,25 @@ module.exports.view = catchAsync(async (req, res, next) => {
 
 // Admin
 module.exports.adminDashboard = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/dashboard", {
+  res.status(200).render("Pages/Admin/dashboard", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/admin/all-clients.js"],
   });
 });
 
 module.exports.pendingApprovals = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/pending-approvals", {
+  res.status(200).render("Pages/Admin/pending-approvals", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/Admin/approvals.js"],
   });
 });
 
 module.exports.adminCompletedRewards = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/completed-rewards", {
+  res.status(200).render("Pages/Admin/completed-rewards", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/completed-rewards.js"],
   });
 });
 
 module.exports.addClient = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/add-clients", {
+  res.status(200).render("Pages/Admin/add-clients", {
     scripts: ["/JS/basic.js", "/JS/add-client.js"],
   });
 });
@@ -198,7 +198,7 @@ module.exports.adminClientView = catchAsync(async (req, res, next) => {
   else details.parentName = parent.name;
   details.parentId = undefined;
   res.status(200).render(
-    "Pages/admin/view-client",
+    "Pages/Admin/view-client",
     Object.assign(details, {
       heading: "User Details",
       scripts: ["/JS/basic.js"],
@@ -207,7 +207,7 @@ module.exports.adminClientView = catchAsync(async (req, res, next) => {
 });
 
 module.exports.adminResetPassword = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/reset-password", {
+  res.status(200).render("Pages/Admin/reset-password", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/reset-pass.js"],
     heading: "Reset Password",
     popup: "success",

@@ -9,38 +9,42 @@ link(rel="stylesheet", href="/CSS/media-query.css")
     if(popup==="success")
       include ../Components/_success.pug
   nav.dash-nav-container
-    a.nav-logo-div(href="/admin/dashboard")
-      img(src="/Source/Logo.svg", alt)
-    a.nav-items-container.nav-items-container-selected(href="/admin/dashboard")
-      .nav-items-icon-div
-        img.nav-items-icon-selected(src="/Source/clientsIcon.svg", alt="overview icon")
-      .nav-items-name-div
-        h2.nav-items-selected Clients
-    a.nav-items-container(href="/admin/add-client")
-      .nav-items-icon-div
-        img(src="/Source/addClientIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Add Client
-    a.nav-items-container(href="/admin/approved-clients")
-      .nav-items-icon-div
-        img(src="/Source/approvedClientsIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Approved Clients
-    a.nav-items-container(href="/admin/pending-approvals")
-      .nav-items-icon-div
-        img(src="/Source/approveIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Pending Approvals
-    a.nav-items-container(href="/admin/completed-rewards")
-      .nav-items-icon-div
-        img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Completed Rewards
-    a.nav-items-container(href="/admin/reset-password")
-      .nav-items-icon-div
-        img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
-      .nav-items-name-div
-        h2 Reset Password
+    .dash-nav-open-close-icon-div
+      img.menuOpenBtn(src="/Source/menuIcon.svg", alt="menu icon")
+      img.menuCloseBtn.hidden(src="/Source/menuCloseIcon.svg", alt="menu close icon")
+    .dash-nav-inner-container
+      a.nav-logo-div(href="/admin/dashboard")
+        img(src="/Source/Logo.svg", alt)
+      a.nav-items-container(class=selected==="dashboard"&&"nav-items-container-selected" href="/admin/dashboard")
+        .nav-items-icon-div(class=selected==="dashboard"&&"nav-items-icon-selected")
+          img.nav-items-icon-selected(src="/Source/clientsIcon.svg", alt="overview icon")
+        .nav-items-name-div
+          h2(class=selected==="dashboard"&&"nav-items-selected") Clients
+      a.nav-items-container(class=selected==="add-client"&&"nav-items-container-selected" href="/admin/add-client")
+        .nav-items-icon-div(class=selected==="add-client"&&"nav-items-icon-selected")
+          img(src="/Source/addClientIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="add-client"&&"nav-items-selected") Add Client
+      a.nav-items-container(class=selected==="approved-clients"&&"nav-items-container-selected" href="/admin/approved-clients")
+        .nav-items-icon-div(class=selected==="approved-clients"&&"nav-items-icon-selected")
+          img(src="/Source/approvedClientsIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="approved-clients"&&"nav-items-selected") Approved Clients
+      a.nav-items-container(class=selected==="pending-approvals"&&"nav-items-container-selected" href="/admin/pending-approvals")
+        .nav-items-icon-div(class=selected==="pending-approvals"&&"nav-items-icon-selected")
+          img(src="/Source/approveIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="pending-approvals"&&"nav-items-selected") Pending Approvals
+      a.nav-items-container(class=selected==="completed-rewards"&&"nav-items-container-selected" href="/admin/completed-rewards")
+        .nav-items-icon-div(class=selected==="completed-rewards"&&"nav-items-icon-selected")
+          img(src="/Source/completedRewardsIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="completed-rewards"&&"nav-items-selected") Completed Rewards
+      a.nav-items-container(class=selected==="reset-password"&&"nav-items-container-selected" href="/admin/reset-password")
+        .nav-items-icon-div(class=selected==="reset-password"&&"nav-items-icon-selected")
+          img(src="/Source/resetPasswordIcon.svg", alt="completed rewards icon")
+        .nav-items-name-div
+          h2(class=selected==="reset-password"&&"nav-items-selected") Reset Password
   .dashboard-content-container
     .dashboard-content-header-div
       h1 Clients

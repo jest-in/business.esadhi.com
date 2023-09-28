@@ -27,6 +27,14 @@ block content
           .add-client-form-ele1
             label(for="name") Parent ID
             input.parentid-input#parentIdInput(type="tel", disabled)
+          .add-client-form-ele1.packageSelect-div.hidden
+            label(for="name") Select Package
+            select#packageSelect(name)
+              option(value, selected, hidden) Select
+              option(value="Prestige") Prestige
+              option(value="Elevate") Elevate
+              option(value="Radiance") Radiance
+              option(value="Essence") Essence
       .add-client-form-div3
         label.login-error-label.hidden#errMsg(for="error") Display Error Here
         input(type="submit", value="Submit")

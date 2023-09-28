@@ -45,9 +45,10 @@ module.exports.completedRewards = catchAsync(async (req, res, next) => {
 });
 
 module.exports.approvedClients = catchAsync(async (req, res, next) => {
-  res.status(200).render("Pages/admin/approved-clients", {
+  res.status(200).render("Pages/Admin/approved-clients", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/admin-approved-clients.js"],
     heading: "Completed Rewards",
+    selected: "approved-clients",
   });
 });
 
@@ -165,24 +166,29 @@ module.exports.view = catchAsync(async (req, res, next) => {
 module.exports.adminDashboard = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/Admin/dashboard", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/admin/all-clients.js"],
+    selected: "dashboard",
   });
 });
 
 module.exports.pendingApprovals = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/Admin/pending-approvals", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/Admin/approvals.js"],
+    selected: "pending-approvals",
   });
 });
 
 module.exports.adminCompletedRewards = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/Admin/completed-rewards", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/completed-rewards.js"],
+    selected: "completed-rewards",
   });
 });
 
 module.exports.addClient = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/Admin/add-clients", {
     scripts: ["/JS/basic.js", "/JS/add-client.js"],
+    selected: "add-client",
+    popup: "success",
   });
 });
 
@@ -210,6 +216,7 @@ module.exports.adminResetPassword = catchAsync(async (req, res, next) => {
   res.status(200).render("Pages/Admin/reset-password", {
     scripts: ["/JS/basic.js", "/JS/search.js", "/JS/reset-pass.js"],
     heading: "Reset Password",
+    selected: "reset-password",
     popup: "success",
   });
 });

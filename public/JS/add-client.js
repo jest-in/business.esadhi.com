@@ -2,16 +2,22 @@
 //Function for selecting direct admin
 const responseSelect = document.getElementById("responseSelect");
 const textInput = document.getElementById("parentIdInput");
+const packageSelect = document.getElementById("packageSelect");
+const packageSelectDiv = document.querySelector(".packageSelect-div");
 
 responseSelect.addEventListener("change", function () {
   const selectedValue = responseSelect.value;
   console.log(selectedValue);
   if (selectedValue === "yes") {
-    textInput.value = "Admin";
+    textInput.value = "admin";
     textInput.disabled = true;
+    packageSelectDiv.classList.remove("hidden");
+    packageSelect.required = true;
   } else {
     textInput.value = "";
     textInput.disabled = false;
+    packageSelectDiv.classList.add("hidden");
+    packageSelect.required = false;
   }
 });
 
@@ -37,6 +43,7 @@ form.addEventListener("submit", function (event) {
   const contact = document.getElementById("contact").value;
   const email = document.getElementById("email").value;
   const parentId = document.getElementById("parentIdInput").value;
+  const category = document.getElementById("packageSelect").value;
 
   //Checking for empty inputs
   if (personName === "") {
@@ -100,7 +107,8 @@ form.addEventListener("submit", function (event) {
       phoneNo: contact,
       email: email,
       address: address,
-      parentId: parentId.toLowerCase(),
+      parentId: parentId,
+      category: category,
     }),
   })
     .then((res) => res.json()) //Parsing to json
